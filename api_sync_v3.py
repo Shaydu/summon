@@ -6,10 +6,19 @@ API Sync v3 Implementation
 """
 
 from flask import Flask, request, jsonify
+import logging
 from typing import List, Dict, Any
 from threading import Lock
 import datetime
 import re
+
+
+# Setup logging
+logging.basicConfig(
+    filename="logs/api_sync_v3.log",
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s"
+)
 
 app = Flask(__name__)
 
@@ -55,16 +64,20 @@ def validate_summon(data: Dict[str, Any]) -> List[Dict[str, str]]:
 @app.route("/api/summon/sync", methods=["POST"])
 def sync_single():
     data = request.get_json(force=True)
+    logging.info(f"/api/summon/sync request: {data}")
     errors = validate_summon(data)
     if errors:
+        logging.warning(f"/api/summon/sync validation error: {errors}")
         return jsonify({"status": "error", "errors": [{"token_id": data.get("token_id", None), **e} for e in errors]}), 400
     with DB_LOCK:
         DB.append(data)
+    logging.info(f"/api/summon/sync success: {data['token_id']}")
     return jsonify({"status": "success"})
 
 @app.route("/api/summon/sync/batch", methods=["POST"])
 def sync_batch():
     req = request.get_json(force=True)
+    logging.info(f"/api/summon/sync/batch request: {req}")
     summons = req.get("summons", [])
     all_errors = []
     for summon in summons:
@@ -72,9 +85,11 @@ def sync_batch():
         for e in errors:
             all_errors.append({"token_id": summon.get("token_id", None), **e})
     if all_errors:
+        logging.warning(f"/api/summon/sync/batch validation error: {all_errors}")
         return jsonify({"status": "error", "errors": all_errors}), 400
     with DB_LOCK:
         DB.extend(summons)
+    logging.info(f"/api/summon/sync/batch success: {[s['token_id'] for s in summons]}")
     return jsonify({"status": "success"})
 
 if __name__ == "__main__":
