@@ -1,4 +1,67 @@
+# Say (Broadcast) Endpoint
+
+POST `/say`
+
+Broadcasts a message to all players in-game using the Minecraft `say` command.
+
+Request Body (example):
+
+```json
+{
+  "message": "Hello, world!"
+}
+```
+
+Response (success):
+
+```json
+{ "status": "ok", "executed": "say Hello, world!" }
+```
+
+Response (error):
+
+```json
+{ "status": "error", "error": "<message>" }
+```
+
+Notes:
+- `message`: The message to broadcast (string, required)
+
 # Summon API Documentation (v3.4)
+
+## Give Item Endpoint
+
+POST `/give`
+
+Allows giving an item to a player in-game.
+
+Request Body (example):
+
+```json
+{
+  "player": "WiryHealer4014",
+  "item": "diamond_sword",
+  "amount": 1
+}
+```
+
+Response (success):
+
+```json
+{ "status": "ok", "executed": "give WiryHealer4014 diamond_sword 1" }
+```
+
+Response (error):
+
+```json
+{ "status": "error", "error": "<message>" }
+```
+
+Notes:
+- `player`: The target player's name (string, required)
+- `item`: The Minecraft item ID (string, required)
+- `amount`: Number of items to give (integer, optional, default 1, max 64)
+
 
 This document describes the Summon API (revision v3.4), which uses the field names expected by the iOS app.
 
@@ -140,3 +203,6 @@ This includes commands for player management, server management, and debugging, 
 - ...and many more
 
 Refer to the linked document for full details, usage, and notes.
+
+Manual give command via console
+give WiryHealer4014 diamond_sword 1

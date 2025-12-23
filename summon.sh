@@ -60,8 +60,7 @@ start() {
     echo $! > "$PIDFILE"
     echo "Started Summon API with PID $!"
     sleep 1
-    echo "Tailing API log (Ctrl+C to stop tailing, API keeps running)..."
-    tail -f "$LOGFILE"
+    echo "Summon API started and running in background. See $LOGFILE for output."
 }
 
     stop() {
