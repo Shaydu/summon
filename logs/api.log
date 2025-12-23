@@ -1,77 +1,57 @@
-INFO:     Started server process [1055657]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-Killing existing Bedrock server PID 1055596
-Killing existing Bedrock server PID 1055598
-Starting Bedrock server...
-[BEDROCK] NO LOG FILE! - setting up server logging...
-[BEDROCK] [2025-12-23 04:04:49:961 INFO] Starting Server
-[BEDROCK] [2025-12-23 04:04:49:961 INFO] Version: 1.21.131.1
-[BEDROCK] [2025-12-23 04:04:49:961 INFO] Session ID: f96ed32f-e039-4260-a59f-691f4039ca52
-[BEDROCK] [2025-12-23 04:04:49:961 INFO] Build ID: 39746295
-[BEDROCK] [2025-12-23 04:04:49:961 INFO] Branch: r/21_u13
-[BEDROCK] [2025-12-23 04:04:49:961 INFO] Commit ID: 3c929d6fc41f48b65a9ff77078f269f25e6c9b9b
-[BEDROCK] [2025-12-23 04:04:49:961 INFO] Configuration: Publish
-[BEDROCK] [2025-12-23 04:04:49:961 INFO] Level Name: Bedrock level
-[BEDROCK] [2025-12-23 04:04:49:962 INFO] No CDN config file found at: cdn_config.json for dedicated server
-[BEDROCK] [2025-12-23 04:04:49:962 INFO] Game mode: 1 Creative
-[BEDROCK] [2025-12-23 04:04:49:962 INFO] Difficulty: 1 EASY
-[BEDROCK] [2025-12-23 04:04:49:963 WARN] Content logging to console is disabled.  Enable it with content-log-console-output-enabled=true in server.properties
-[BEDROCK] [2025-12-23 04:04:50:342 INFO] Opening level 'worlds/Bedrock level/db'
-[BEDROCK] [2025-12-23 04:04:50:355 INFO] Pack Stack - None
-[BEDROCK] [2025-12-23 04:04:51:095 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
-[BEDROCK] [2025-12-23 04:04:51:095 INFO] IPv6 supported, port: 19133: Used for gameplay
-[BEDROCK] [2025-12-23 04:04:51:122 INFO] Waiting for Minecraft services...
-[BEDROCK] [2025-12-23 04:04:51:224 INFO] Server started.
-[BEDROCK] [2025-12-23 04:04:51:224 INFO] ================ TELEMETRY MESSAGE ===================
-[BEDROCK] [2025-12-23 04:04:51:224 INFO] Server Telemetry is currently not enabled. 
-[BEDROCK] [2025-12-23 04:04:51:224 INFO] Enabling this telemetry helps us improve the game.
-[BEDROCK] [2025-12-23 04:04:51:224 INFO] 
-[BEDROCK] [2025-12-23 04:04:51:224 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
-[BEDROCK] [2025-12-23 04:04:51:224 INFO] to the server.properties file in the handheld/src-server directory
-[BEDROCK] [2025-12-23 04:04:51:224 INFO] ======================================================
-INFO:     10.0.0.152:55079 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55080 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-[BEDROCK] [2025-12-23 04:05:31:372 INFO] Player connected: WiryHealer4014, xuid: 2535433425008118
-[BEDROCK] [2025-12-23 04:05:32:455 INFO] Player Spawned: WiryHealer4014 xuid: 2535433425008118, pfid: 31992D037AC1C5D7
-INFO:     10.0.0.152:55081 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55082 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55083 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55084 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55085 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55086 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55087 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55088 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55089 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55090 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55091 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55092 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55093 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55094 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55095 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55096 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55097 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55098 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55099 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55100 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55101 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55102 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55103 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55104 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55111 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55112 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55113 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55114 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55115 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55116 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55117 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55118 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55119 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55120 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55121 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55122 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55123 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55124 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55125 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
-INFO:     10.0.0.152:55126 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+Traceback (most recent call last):
+  File "/home/doo/minecraft-bedrock-server/summon/venv/bin/uvicorn", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/doo/minecraft-bedrock-server/summon/venv/lib/python3.12/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/doo/minecraft-bedrock-server/summon/venv/lib/python3.12/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/home/doo/minecraft-bedrock-server/summon/venv/lib/python3.12/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/doo/minecraft-bedrock-server/summon/venv/lib/python3.12/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/doo/minecraft-bedrock-server/summon/venv/lib/python3.12/site-packages/uvicorn/main.py", line 423, in main
+    run(
+  File "/home/doo/minecraft-bedrock-server/summon/venv/lib/python3.12/site-packages/uvicorn/main.py", line 593, in run
+    server.run()
+  File "/home/doo/minecraft-bedrock-server/summon/venv/lib/python3.12/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/doo/minecraft-bedrock-server/summon/venv/lib/python3.12/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/home/doo/minecraft-bedrock-server/summon/venv/lib/python3.12/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/home/doo/minecraft-bedrock-server/summon/venv/lib/python3.12/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/doo/minecraft-bedrock-server/summon/venv/lib/python3.12/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/doo/minecraft-bedrock-server/summon/nfc_api.py", line 4, in <module>
+    from services.summon_service import handle_summon
+  File "/home/doo/minecraft-bedrock-server/summon/services/summon_service.py", line 2, in <module>
+    def handle_sync(data: Dict[str, Any]) -> Dict[str, Any]:
+                          ^^^^
+NameError: name 'Dict' is not defined. Did you mean: 'dict'?

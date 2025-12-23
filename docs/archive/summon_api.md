@@ -5,7 +5,7 @@ This document describes the API endpoints for summoning in-game non-player chara
 ## Authentication
 All endpoints require an `x-api-key` header with the correct API key.
 
----
+
 
 ## POST `/summon`
 Summon an NPC or object at a specific player's location.

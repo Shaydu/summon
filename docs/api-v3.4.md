@@ -48,6 +48,83 @@ Response (error):
 Notes:
 - `summoning_player` is the actor; `summoned_player` is the target. The server will execute the command in the appropriate context.
 
+## Sync Endpoints (Central API)
+
+The API provides sync endpoints for reliable batch processing of summon operations when immediate execution to game servers is not possible.
+
+### SummonPayload
+
+Fields (JSON keys / types):
+
+- `token_id` (string) — required. UUID or unique token identifier for the NFC token.
+- `player_id` (string) — required. The actor (player who caused the action). Trimmed on the client; must be non-empty.
+- `summon_type` (string) — required. Non-empty string describing the entity/item type (e.g., "piglin", "give_diamond_sword").
+- `summon_time` (string) — required. ISO 8601 UTC timestamp.
+- `location` (object) — required. Coordinates with `x`, `y`, `z` (float / number).
+- `metadata` (object, required) — structured metadata. Common fields:
+  - `custom_name` (string, optional) — max 32 chars
+  - `level` (integer, optional) — 1..100
+
+Example SummonPayload:
+
+```json
+{
+  "token_id": "abc123",
+  "player_id": "ActorPlayer",
+  "summon_type": "piglin",
+  "summon_time": "2025-12-22T15:00:00Z",
+  "location": { "x": 100.5, "y": 64.0, "z": -200.0 },
+  "metadata": { "custom_name": "Bob", "level": 5 }
+}
+```
+
+### POST `/api/summon/sync` (single)
+
+- Request: single `SummonPayload` as JSON.
+- On success: 200 OK.
+- On validation failure: 400 Bad Request with an error description.
+
+### POST `/api/summon/sync/batch` (atomic batch)
+
+- Request body:
+
+```json
+{ "summons": [ /* array of SummonPayload objects */ ] }
+```
+
+- Atomicity: The batch is all-or-nothing. If any record fails validation or processing, the entire request returns 400 and no records are applied.
+- On success: 200 OK.
+- On 400: the server MUST return a structured `BatchErrorResponse` describing per-record validation errors.
+
+BatchErrorResponse schema:
+
+```json
+{
+  "status": "error",
+  "errors": [
+    { "token_id": "abc123", "field": "player_id", "message": "player_id is required" },
+    { "token_id": "def456", "field": "summon_time", "message": "invalid ISO timestamp" }
+  ]
+}
+```
+
+### POST `/summon` (central API immediate)
+
+Alternative to direct game server summon - posts to central API which may forward to configured Minecraft server.
+
+Request body: Same as immediate game server endpoint.
+
+Response: Same as immediate game server endpoint.
+
+## Validation Rules
+
+- `token_id`: non-empty, max 64 chars.
+- `player_id`: non-empty, trimmed, max 64 chars.
+- `summon_type`: non-empty, trimmed, max 64 chars.
+- `summon_time`: valid ISO 8601 UTC timestamp.
+- `location`: `x`, `y`, `z` each numeric.
+- `metadata`: required object. `custom_name` (max 32 chars) and `level` (int, 1..100) validated if provided.
+
 # Minecraft Server Console Commands Reference
 
 For a comprehensive list of Minecraft Bedrock server console commands, see:

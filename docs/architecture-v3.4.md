@@ -27,10 +27,13 @@ summon/
 ## Module Responsibilities
 
 - **nfc_api.py**: FastAPI app, imports and routes to service modules only.
-- **services/summon_service.py**: All /summon and sync logic.
+- **services/summon_service.py**: All summon-related endpoints:
+  - `POST /summon` — immediate game server execution
+  - `POST /api/summon/sync` — single summon sync
+  - `POST /api/summon/sync/batch` — batch summon sync
 - **services/player_service.py**: All /players logic.
-- **services/nfc_service.py**: All /nfc-event logic.
-- **utils/validation.py**: Shared request/response validation.
+- **services/nfc_service.py**: All /nfc-event logic (legacy endpoint).
+- **utils/validation.py**: Shared request/response validation for all payloads.
 - **utils/error_handling.py**: Shared error formatting and logging.
 
 ## Example Request Flow
