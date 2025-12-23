@@ -29,4 +29,9 @@ def test_summon():
     resp = response.json()
     assert resp["status"] == "ok"
     assert "executed" in resp
+    # Expect the server to construct the command using the target player and entity
+    expected_cmd = f"execute as @a[name={data['summoned_player']}] at @s run summon {data['entity_summoned']} ~ ~5 ~4"
+    assert resp.get("executed") == expected_cmd
     assert "operation_id" in resp
+    # Ensure the command was sent to the server console
+    assert resp.get("sent") is True

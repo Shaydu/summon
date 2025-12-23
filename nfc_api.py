@@ -1,10 +1,4 @@
-from services.say_service import handle_say
-@app.post("/say")
-async def say_endpoint(request: Request, x_api_key: str = Header(...)):
-    require_api_key(x_api_key)
-    data = await request.json()
-    resp = handle_say(data)
-    return JSONResponse(content=resp)
+
 
 # --- Modular FastAPI app (v3.4) ---
 from fastapi import FastAPI, HTTPException, Header, Request
@@ -14,6 +8,8 @@ from services.player_service import get_players as get_players_service
 from services.nfc_service import handle_nfc_event as handle_nfc_event_service
 from services.chat_service import handle_chat
 from services.give_service import handle_give
+from services.say_service import handle_say
+from services.time_service import handle_time
 
 
 app = FastAPI(title="NFC → Minecraft API v3.4")
@@ -29,6 +25,22 @@ async def chat_endpoint(request: Request, x_api_key: str = Header(...)):
     require_api_key(x_api_key)
     data = await request.json()
     resp = handle_chat(data)
+    return JSONResponse(content=resp)
+
+
+@app.post("/say")
+async def say_endpoint(request: Request, x_api_key: str = Header(...)):
+    require_api_key(x_api_key)
+    data = await request.json()
+    resp = handle_say(data)
+    return JSONResponse(content=resp)
+
+
+@app.post("/time")
+async def time_endpoint(request: Request, x_api_key: str = Header(...)):
+    require_api_key(x_api_key)
+    data = await request.json()
+    resp = handle_time(data)
     return JSONResponse(content=resp)
 
 API_KEY = "super-secret-test-key22"

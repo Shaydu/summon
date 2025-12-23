@@ -1,0 +1,24 @@
+2025-12-23 07:44:15,235 INFO Received say request: {'message': 'Hello, world!'}
+2025-12-23 07:44:15,248 INFO Say executed: say Hello, world!
+2025-12-23 07:44:15,250 INFO Received say request: {}
+2025-12-23 07:44:15,251 ERROR Say error: Missing or invalid 'message' field
+2025-12-23 08:10:54,405 INFO Received say request: {'message': 'test from server'}
+2025-12-23 08:10:54,418 INFO Say executed: say test from server
+2025-12-23 08:11:22,349 INFO Received say request: {'message': 'test from server'}
+2025-12-23 08:11:22,367 INFO Say executed: say test from server
+2025-12-23 08:13:33,012 INFO Received say request: {'message': 'Ddd'}
+2025-12-23 08:13:33,031 INFO Say executed: say Ddd
+2025-12-23 08:13:59,433 INFO Received say request: {'message': 'Fuck'}
+2025-12-23 08:13:59,452 INFO Say executed: say Fuck
+2025-12-23 08:14:03,214 INFO Received say request: {'message': 'Aaaa'}
+2025-12-23 08:14:03,233 INFO Say executed: say Aaaa
+2025-12-23 08:37:29,417 INFO Received say request: {'message': 'Did'}
+2025-12-23 08:37:29,463 INFO Say executed: say Did
+2025-12-23 08:37:36,679 INFO Received say request: {'message': 'Aaaaa'}
+2025-12-23 08:37:36,727 INFO Say executed: say Aaaaa
+2025-12-23 09:00:54,581 INFO Received say request: {'message': 'Balls'}
+2025-12-23 09:00:54,600 INFO Say executed: say Balls
+2025-12-23 09:43:53,752 INFO Received say request: {'message': 'Hello, world!'}
+2025-12-23 09:43:53,765 INFO Say executed: say Hello, world!
+2025-12-23 09:43:53,767 INFO Received say request: {}
+2025-12-23 09:43:53,767 ERROR Say error: Missing or invalid 'message' field

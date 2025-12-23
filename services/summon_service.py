@@ -2,6 +2,7 @@ from fastapi import HTTPException
 from typing import Dict, Any
 import uuid
 from summon_db import insert_summon
+from utils.mc_send import send_command_to_minecraft
 
 # summon_service.py
 """
@@ -81,9 +82,12 @@ def handle_summon(data: Dict[str, Any]) -> Dict[str, Any]:
         data.get("gps_lon")
     )
 
-    # Build summon command (example, adjust as needed)
-    cmd = f"execute as @a[name={data['summoned_player']}] at @s run summon {data['summoned_object_type']} ~ ~ ~2"
-    # TODO: Actually send command to Bedrock server if needed
+    # Build summon command using the target player and the entity type fields.
+    # Prefer `entity_summoned`, then `minecraft_id`, then `summoned_object_type` as fallbacks.
+    entity = data.get("entity_summoned") or data.get("minecraft_id") or data.get("summoned_object_type")
+    cmd = f"execute as @a[name={data['summoned_player']}] at @s run summon {entity} ~ ~5 ~4"
+    # Try to send the command to the running Minecraft server screen session.
+    sent = send_command_to_minecraft(cmd)
 
     operation_id = f"api-op-{uuid.uuid4().hex[:8]}"
     response = {
@@ -91,4 +95,6 @@ def handle_summon(data: Dict[str, Any]) -> Dict[str, Any]:
         "executed": cmd,
         "operation_id": operation_id
     }
+    # Include whether we successfully sent the command to the server console.
+    response["sent"] = bool(sent)
     return response

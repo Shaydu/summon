@@ -1,37 +1,22 @@
-INFO:     Started server process [1072354]
+INFO:     Started server process [1083452]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     127.0.0.1:42870 - "POST /give HTTP/1.1" 200 OK
-INFO:     127.0.0.1:40306 - "POST /give HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55351 - "GET /players HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55352 - "POST /give HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55353 - "POST /give HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55353 - "POST /give HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55353 - "POST /give HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55437 - "GET /players HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55438 - "POST /give HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55438 - "POST /give HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55439 - "POST /summon HTTP/1.1" 400 Bad Request
-INFO:     10.0.0.152:55440 - "POST /give HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55441 - "POST /summon HTTP/1.1" 400 Bad Request
-INFO:     10.0.0.152:55442 - "POST /summon HTTP/1.1" 400 Bad Request
-INFO:     10.0.0.152:55444 - "GET /players HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55444 - "POST /api/summon/sync/batch HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55444 - "POST /give HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55446 - "GET /players HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55447 - "POST /nfc-event HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55447 - "POST /nfc-event HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55448 - "POST /give HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55449 - "POST /summon HTTP/1.1" 400 Bad Request
-INFO:     10.0.0.152:55450 - "POST /nfc-event HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55450 - "POST /nfc-event HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55452 - "GET /players HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55452 - "POST /api/summon/sync/batch HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55453 - "POST /summon HTTP/1.1" 400 Bad Request
-INFO:     10.0.0.152:55453 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55454 - "POST /api/summon/sync/batch HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55454 - "POST /give HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55456 - "POST /give HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55457 - "POST /nfc-event HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55458 - "POST /nfc-event HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55561 - "POST /summon HTTP/1.1" 400 Bad Request
+INFO:     10.0.0.152:55562 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55563 - "POST /api/summon/sync/batch HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55563 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55566 - "POST /time HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55567 - "POST /time HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55568 - "POST /time HTTP/1.1" 200 OK

@@ -4,12 +4,40 @@ POST `/say`
 
 Broadcasts a message to all players in-game using the Minecraft `say` command.
 
+Headers:
+- `Content-Type: application/json`
+- `x-api-key: <API_KEY>` (required)
+
 Request Body (example):
 
 ```json
 {
   "message": "Hello, world!"
 }
+```
+
+Curl example:
+
+```bash
+curl -X POST http://YOUR_SERVER:8000/say \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: super-secret-test-key22" \
+  -d '{"message":"Server restarting soon!"}'
+```
+
+Swift (URLSession) example:
+
+```swift
+let url = URL(string: "http://YOUR_SERVER:8000/say")!
+var req = URLRequest(url: url)
+req.httpMethod = "POST"
+req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+req.setValue("super-secret-test-key22", forHTTPHeaderField: "x-api-key")
+let json = ["message": "Hello from iOS"]
+req.httpBody = try? JSONSerialization.data(withJSONObject: json)
+URLSession.shared.dataTask(with: req) { data, resp, err in
+    // handle response
+}.resume()
 ```
 
 Response (success):
@@ -26,6 +54,73 @@ Response (error):
 
 Notes:
 - `message`: The message to broadcast (string, required)
+
+# Time Endpoint
+
+POST `/time`
+
+Set the in-game time to a named value or numeric ticks.
+
+Headers:
+- `Content-Type: application/json`
+- `x-api-key: <API_KEY>` (required)
+
+Request Body (examples):
+
+```json
+{ "time": "day" }
+```
+
+or
+
+```json
+{ "time": "night" }
+```
+
+or (ticks):
+
+```json
+{ "time": 6000 }
+```
+
+Curl example:
+
+```bash
+curl -X POST http://YOUR_SERVER:8000/time \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: super-secret-test-key22" \
+  -d '{"time":"day"}'
+```
+
+Swift (URLSession) example:
+
+```swift
+let url = URL(string: "http://YOUR_SERVER:8000/time")!
+var req = URLRequest(url: url)
+req.httpMethod = "POST"
+req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+req.setValue("super-secret-test-key22", forHTTPHeaderField: "x-api-key")
+let json = ["time": "day"]
+req.httpBody = try? JSONSerialization.data(withJSONObject: json)
+URLSession.shared.dataTask(with: req) { data, resp, err in
+    // handle response
+}.resume()
+```
+
+Response (success):
+
+```json
+{ "status": "ok", "executed": "time set day" }
+```
+
+Response (error):
+
+```json
+{ "status": "error", "error": "<message>" }
+```
+
+Notes:
+- `time`: Accepts `day`, `night`, or numeric tick values (integer). The server will translate named values to ticks (`day` => 1000, `night` => 13000) when executing.
 
 # Summon API Documentation (v3.4)
 
@@ -110,6 +205,22 @@ Response (error):
 
 Notes:
 - `summoning_player` is the actor; `summoned_player` is the target. The server will execute the command in the appropriate context.
+
+## Command Execution Syntax
+
+The game server executes a Minecraft Bedrock console command using the following pattern when handling a `/summon` request:
+
+```
+execute as @a[name=<summoned_player>] at @s run summon <entity> <x> <y> <z>
+```
+
+Example (matches user-reported working syntax):
+
+```
+execute as @a[name=WiryHealer4014] at @s run summon ender_dragon ~ ~5 ~4
+```
+
+The API's `executed` response field will contain the concrete command string that was sent to the server.
 
 ## Sync Endpoints (Central API)
 
