@@ -1,0 +1,77 @@
+INFO:     Started server process [1055657]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+Killing existing Bedrock server PID 1055596
+Killing existing Bedrock server PID 1055598
+Starting Bedrock server...
+[BEDROCK] NO LOG FILE! - setting up server logging...
+[BEDROCK] [2025-12-23 04:04:49:961 INFO] Starting Server
+[BEDROCK] [2025-12-23 04:04:49:961 INFO] Version: 1.21.131.1
+[BEDROCK] [2025-12-23 04:04:49:961 INFO] Session ID: f96ed32f-e039-4260-a59f-691f4039ca52
+[BEDROCK] [2025-12-23 04:04:49:961 INFO] Build ID: 39746295
+[BEDROCK] [2025-12-23 04:04:49:961 INFO] Branch: r/21_u13
+[BEDROCK] [2025-12-23 04:04:49:961 INFO] Commit ID: 3c929d6fc41f48b65a9ff77078f269f25e6c9b9b
+[BEDROCK] [2025-12-23 04:04:49:961 INFO] Configuration: Publish
+[BEDROCK] [2025-12-23 04:04:49:961 INFO] Level Name: Bedrock level
+[BEDROCK] [2025-12-23 04:04:49:962 INFO] No CDN config file found at: cdn_config.json for dedicated server
+[BEDROCK] [2025-12-23 04:04:49:962 INFO] Game mode: 1 Creative
+[BEDROCK] [2025-12-23 04:04:49:962 INFO] Difficulty: 1 EASY
+[BEDROCK] [2025-12-23 04:04:49:963 WARN] Content logging to console is disabled.  Enable it with content-log-console-output-enabled=true in server.properties
+[BEDROCK] [2025-12-23 04:04:50:342 INFO] Opening level 'worlds/Bedrock level/db'
+[BEDROCK] [2025-12-23 04:04:50:355 INFO] Pack Stack - None
+[BEDROCK] [2025-12-23 04:04:51:095 INFO] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
+[BEDROCK] [2025-12-23 04:04:51:095 INFO] IPv6 supported, port: 19133: Used for gameplay
+[BEDROCK] [2025-12-23 04:04:51:122 INFO] Waiting for Minecraft services...
+[BEDROCK] [2025-12-23 04:04:51:224 INFO] Server started.
+[BEDROCK] [2025-12-23 04:04:51:224 INFO] ================ TELEMETRY MESSAGE ===================
+[BEDROCK] [2025-12-23 04:04:51:224 INFO] Server Telemetry is currently not enabled. 
+[BEDROCK] [2025-12-23 04:04:51:224 INFO] Enabling this telemetry helps us improve the game.
+[BEDROCK] [2025-12-23 04:04:51:224 INFO] 
+[BEDROCK] [2025-12-23 04:04:51:224 INFO] To enable this feature, add the line 'emit-server-telemetry=true'
+[BEDROCK] [2025-12-23 04:04:51:224 INFO] to the server.properties file in the handheld/src-server directory
+[BEDROCK] [2025-12-23 04:04:51:224 INFO] ======================================================
+INFO:     10.0.0.152:55079 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55080 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+[BEDROCK] [2025-12-23 04:05:31:372 INFO] Player connected: WiryHealer4014, xuid: 2535433425008118
+[BEDROCK] [2025-12-23 04:05:32:455 INFO] Player Spawned: WiryHealer4014 xuid: 2535433425008118, pfid: 31992D037AC1C5D7
+INFO:     10.0.0.152:55081 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55082 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55083 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55084 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55085 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55086 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55087 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55088 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55089 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55090 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55091 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55092 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55093 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55094 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55095 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55096 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55097 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55098 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55099 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55100 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55101 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55102 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55103 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55104 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55111 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55112 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55113 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55114 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55115 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55116 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55117 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55118 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55119 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55120 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55121 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55122 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55123 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55124 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55125 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found
+INFO:     10.0.0.152:55126 - "POST /api/summon/sync/batch HTTP/1.1" 404 Not Found

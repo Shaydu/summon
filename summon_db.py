@@ -9,8 +9,8 @@ CREATE TABLE IF NOT EXISTS summons (
     server_ip TEXT,
     server_port INTEGER,
     summoned_object_type TEXT,
-    summoning_user TEXT,
-    summoned_user TEXT,
+    summoning_player TEXT,
+    summoned_player TEXT,
     timestamp_utc TEXT,
     gps_lat REAL,
     gps_lon REAL
@@ -25,13 +25,13 @@ def init_db():
 
 def insert_summon(
     server_ip, server_port, summoned_object_type,
-    summoning_user, summoned_user, timestamp_utc,
+    summoning_player, summoned_player, timestamp_utc,
     gps_lat=None, gps_lon=None
 ):
     conn = sqlite3.connect(DB_PATH)
     conn.execute(
-        "INSERT INTO summons (server_ip, server_port, summoned_object_type, summoning_user, summoned_user, timestamp_utc, gps_lat, gps_lon) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-        (server_ip, server_port, summoned_object_type, summoning_user, summoned_user, timestamp_utc, gps_lat, gps_lon)
+        "INSERT INTO summons (server_ip, server_port, summoned_object_type, summoning_player, summoned_player, timestamp_utc, gps_lat, gps_lon) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        (server_ip, server_port, summoned_object_type, summoning_player, summoned_player, timestamp_utc, gps_lat, gps_lon)
     )
     conn.commit()
     conn.close()

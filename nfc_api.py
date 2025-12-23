@@ -1,3 +1,10 @@
+import logging
+# ---------- Config ----------
+logging.basicConfig(
+    filename="logs/api.log",
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s"
+)
 
 import subprocess
 import threading
@@ -146,8 +153,8 @@ class SummonRequest(BaseModel):
     server_ip: str
     server_port: int
     summoned_object_type: str
-    summoning_user: str
-    summoned_user: str
+    summoning_player: str
+    summoned_player: str
     timestamp: Optional[str] = None  # UTC ISO format
     gps_lat: Optional[float] = None
     gps_lon: Optional[float] = None
@@ -168,6 +175,7 @@ def startup_event():
 
 @app.post("/nfc-event")
 def handle_nfc_event(event: NfcEvent, x_api_key: str = Header(...)):
+    logging.info(f"POST /nfc-event call: {event.dict()}")
     require_api_key(x_api_key)
 
     try:
@@ -180,8 +188,11 @@ def handle_nfc_event(event: NfcEvent, x_api_key: str = Header(...)):
             raise HTTPException(status_code=400, detail="Unknown action or missing player")
 
         bedrock.send_command(cmd)
-        return {"status": "ok", "executed": cmd}
+        response = {"status": "ok", "executed": cmd}
+        logging.info(f"POST /nfc-event response: {response}")
+        return response
     except RuntimeError as e:
+        logging.error(f"POST /nfc-event error: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -189,9 +200,10 @@ def handle_nfc_event(event: NfcEvent, x_api_key: str = Header(...)):
 
 @app.post("/summon")
 def summon_npc(req: SummonRequest, x_api_key: str = Header(...)):
+    logging.info(f"POST /summon call: {req.dict()}")
     require_api_key(x_api_key)
     # Validate required fields
-    if not all([req.server_ip, req.server_port, req.summoned_object_type, req.summoning_user, req.summoned_user]):
+    if not all([req.server_ip, req.server_port, req.summoned_object_type, req.summoning_player, req.summoned_player]):
         raise HTTPException(status_code=400, detail="Missing required fields")
     # Use provided timestamp or current UTC
     timestamp_utc = req.timestamp or datetime.utcnow().isoformat()
@@ -200,27 +212,34 @@ def summon_npc(req: SummonRequest, x_api_key: str = Header(...)):
         req.server_ip,
         req.server_port,
         req.summoned_object_type,
-        req.summoning_user,
-        req.summoned_user,
+        req.summoning_player,
+        req.summoned_player,
         timestamp_utc,
         req.gps_lat,
         req.gps_lon
     )
     # Build summon command
-    cmd = f"execute as @a[name={req.summoned_user}] at @s run summon {req.summoned_object_type} ~ ~ ~2"
+    cmd = f"execute as @a[name={req.summoned_player}] at @s run summon {req.summoned_object_type} ~ ~ ~2"
     try:
         bedrock.send_command(cmd)
-        return {"status": "ok", "executed": cmd}
+        response = {"status": "ok", "executed": cmd}
+        logging.info(f"POST /summon response: {response}")
+        return response
     except RuntimeError as e:
+        logging.error(f"POST /summon error: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# ---------- New endpoint: List users ----------
-@app.get("/users")
-def get_users(x_api_key: str = Header(...)):
+# ---------- New endpoint: List players ----------
+@app.get("/players")
+def get_players(x_api_key: str = Header(...)):
+    logging.info("GET /players call")
     require_api_key(x_api_key)
     try:
-        users = bedrock.get_online_players()
-        return {"users": users}
+        players = bedrock.get_online_players()
+        response = {"players": players}
+        logging.info(f"GET /players response: {response}")
+        return response
     except Exception as e:
+        logging.error(f"GET /players error: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))

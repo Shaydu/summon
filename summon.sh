@@ -4,8 +4,8 @@
 
 VENVDIR="venv"
 PIDFILE="summon_api_v3.pid"
-LOGFILE="logs/api_sync_v3.log"
-APP="api_sync_v3.py"
+LOGFILE="logs/api.log"
+APP="nfc_api.py"
 PYTHON="python3"
 MINECRAFT_DIR="../bedrock-server-1.21.131.1"
 MINECRAFT_CMD="./bedrock_server"
@@ -34,7 +34,7 @@ Commands:
 Notes:
     - To connect to the Minecraft console: screen -r minecraft_server
     - To list screen sessions: screen -ls
-    - API log: logs/api_sync_v3.log
+    - API log: logs/api.log
     - Minecraft log: ../bedrock-server-1.21.131.1/bedrock_server.log
 EOF
 }
@@ -42,19 +42,23 @@ EOF
 start() {
     if [ -f "$PIDFILE" ]; then
         if kill -0 $(cat "$PIDFILE") 2>/dev/null; then
-            echo "Summon API v3 is already running (PID $(cat $PIDFILE))"
+            echo "Summon API is already running (PID $(cat $PIDFILE))"
             exit 0
         else
-            echo "Stale PID file found for Summon API v3. Removing..."
+            echo "Stale PID file found for Summon API. Removing..."
             rm -f "$PIDFILE"
         fi
     fi
-    echo "Activating venv..."
-    source "$VENVDIR/bin/activate"
-    echo "Starting Summon API v3..."
-    nohup $PYTHON $APP > "$LOGFILE" 2>&1 &
+    if [ -z "$VIRTUAL_ENV" ]; then
+        echo "Activating venv..."
+        source "$VENVDIR/bin/activate"
+    else
+        echo "venv already active: $VIRTUAL_ENV"
+    fi
+    echo "Starting Summon API (FastAPI, nfc_api.py) on 0.0.0.0:8000..."
+    nohup uvicorn nfc_api:app --host 0.0.0.0 --port 8000 > "$LOGFILE" 2>&1 &
     echo $! > "$PIDFILE"
-    echo "Started Summon API v3 with PID $!"
+    echo "Started Summon API with PID $!"
     sleep 1
     echo "Tailing API log (Ctrl+C to stop tailing, API keeps running)..."
     tail -f "$LOGFILE"
@@ -81,6 +85,13 @@ start() {
     restart() {
         stop
         sleep 1
+        # Ensure venv is active before starting
+        if [ -z "$VIRTUAL_ENV" ]; then
+            echo "Activating venv..."
+            source "$VENVDIR/bin/activate"
+        else
+            echo "venv already active: $VIRTUAL_ENV"
+        fi
         start
     }
 
@@ -150,6 +161,13 @@ start() {
     start_all() {
         start_minecraft
         sleep 2
+        # Ensure venv is active before starting
+        if [ -z "$VIRTUAL_ENV" ]; then
+            echo "Activating venv..."
+            source "$VENVDIR/bin/activate"
+        else
+            echo "venv already active: $VIRTUAL_ENV"
+        fi
         start
     }
 
@@ -160,6 +178,13 @@ start() {
         sleep 2
         start_minecraft
         sleep 2
+        # Ensure venv is active before starting
+        if [ -z "$VIRTUAL_ENV" ]; then
+            echo "Activating venv..."
+            source "$VENVDIR/bin/activate"
+        else
+            echo "venv already active: $VIRTUAL_ENV"
+        fi
         start
     }
 
