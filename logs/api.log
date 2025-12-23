@@ -1,22 +1,21 @@
-INFO:     Started server process [1083452]
+INFO:     Started server process [1085453]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     10.0.0.152:55561 - "POST /summon HTTP/1.1" 400 Bad Request
-INFO:     10.0.0.152:55562 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55563 - "POST /api/summon/sync/batch HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55563 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55564 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55566 - "POST /time HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55567 - "POST /time HTTP/1.1" 200 OK
-INFO:     10.0.0.152:55568 - "POST /time HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55571 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55572 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55572 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55572 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55572 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55572 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55572 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55572 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55572 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55572 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55573 - "POST /give HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55574 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55574 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55575 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55576 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55576 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:55577 - "POST /give HTTP/1.1" 200 OK
