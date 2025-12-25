@@ -33,6 +33,8 @@ async def say_endpoint(request: Request, x_api_key: str = Header(...)):
     require_api_key(x_api_key)
     data = await request.json()
     resp = handle_say(data)
+    if isinstance(resp, dict) and resp.get("status") == "error":
+        return JSONResponse(content=resp, status_code=400)
     return JSONResponse(content=resp)
 
 
@@ -41,6 +43,8 @@ async def time_endpoint(request: Request, x_api_key: str = Header(...)):
     require_api_key(x_api_key)
     data = await request.json()
     resp = handle_time(data)
+    if isinstance(resp, dict) and resp.get("status") == "error":
+        return JSONResponse(content=resp, status_code=400)
     return JSONResponse(content=resp)
 
 API_KEY = "super-secret-test-key22"

@@ -58,4 +58,4 @@ def handle_time(data: Any) -> Dict[str, Any]:
         return {"status": "error", "error": err}
 
     _logger.info("Time executed: %s", cmd)
-    return {"status": "ok", "executed": cmd}
+    return {"status": "ok", "executed": cmd, "sent": bool(sent)}

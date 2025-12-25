@@ -31,4 +31,4 @@ def handle_say(data):
         _logger.error("Say failed to send command: %s", say_cmd)
         return {"status": "error", "error": err}
     _logger.info("Say executed: %s", say_cmd)
-    return {"status": "ok", "executed": say_cmd}
+    return {"status": "ok", "executed": say_cmd, "sent": bool(sent)}

@@ -12,11 +12,12 @@ def test_say_success():
     data = response.json()
     assert data["status"] == "ok"
     assert "say Hello, world!" in data["executed"]
+    assert data.get("sent") is True
 
 def test_say_missing_message():
     payload = {}
     response = client.post("/say", json=payload, headers={"x-api-key": API_KEY})
-    assert response.status_code == 200
+    assert response.status_code == 400
     data = response.json()
     assert data["status"] == "error"
     assert "message" in data["error"]
