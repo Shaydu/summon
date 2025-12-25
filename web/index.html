@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mobs Browser</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;padding:20px}
+    .mob{display:inline-block;width:150px;margin:8px;text-align:center}
+    .mob img{width:128px;height:128px;object-fit:cover;border:1px solid #ccc;padding:4px;background:#fff}
+    a{color:#0366d6;text-decoration:none}
+  </style>
+</head>
+<body>
+  <h1>Mobs</h1>
+  <p>Click an image to view details. You will be prompted for the API key.</p>
+  <div id="list">Loading...</div>
+
+  <script>
+    async function load(){
+      const key = prompt('Enter API key (x-api-key):');
+      if(!key) { document.getElementById('list').innerText = 'API key required'; return }
+      const res = await fetch('/mobs', { headers: { 'x-api-key': key } });
+      if(!res.ok){ document.getElementById('list').innerText = 'Failed to load mobs: ' + res.status; return }
+      const data = await res.json();
+      const el = document.getElementById('list'); el.innerHTML = '';
+      if(!data.mobs || data.mobs.length===0){ el.innerText = 'No mobs available.'; return }
+      data.mobs.forEach(m => {
+        const d = document.createElement('div'); d.className = 'mob';
+        const a = document.createElement('a');
+        a.href = '/web/mob.html?name=' + encodeURIComponent(m.name);
+        a.onclick = function(ev){ ev.preventDefault(); localStorage.setItem('api_key', key); window.location = this.href; };
+        const img = document.createElement('img'); img.src = m.image; img.alt = m.name;
+        const nm = document.createElement('div'); nm.textContent = m.name;
+        a.appendChild(img); d.appendChild(a); d.appendChild(nm); el.appendChild(d);
+      });
+    }
+    load().catch(e=>{document.getElementById('list').innerText='Error loading';console.error(e)})
+  </script>
+</body>
+</html>

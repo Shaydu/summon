@@ -37,3 +37,52 @@ def insert_summon(
     conn.close()
 
 init_db()
+
+
+def get_all_summons():
+    """Return all summons as a list of dicts (most recent first)."""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT id, server_ip, server_port, summoned_object_type, summoning_player, summoned_player, timestamp_utc, gps_lat, gps_lon FROM summons ORDER BY id DESC"
+    )
+    rows = cur.fetchall()
+    conn.close()
+    result = []
+    for r in rows:
+        result.append({k: r[k] for k in r.keys()})
+    return result
+
+
+def get_summon_by_id(summon_id):
+    """Return a single summon by id as a dict, or None if not found."""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT id, server_ip, server_port, summoned_object_type, summoning_player, summoned_player, timestamp_utc, gps_lat, gps_lon FROM summons WHERE id = ?",
+        (summon_id,)
+    )
+    row = cur.fetchone()
+    conn.close()
+    if row is None:
+        return None
+    return {k: row[k] for k in row.keys()}
+
+
+def get_summons_by_mob(mob_name: str):
+    """Return summons filtered by summoned_object_type (case-insensitive), most recent first."""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT id, server_ip, server_port, summoned_object_type, summoning_player, summoned_player, timestamp_utc, gps_lat, gps_lon FROM summons WHERE LOWER(summoned_object_type)=? ORDER BY id DESC",
+        (mob_name.lower(),)
+    )
+    rows = cur.fetchall()
+    conn.close()
+    result = []
+    for r in rows:
+        result.append({k: r[k] for k in r.keys()})
+    return result

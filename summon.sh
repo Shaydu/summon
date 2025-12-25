@@ -4,6 +4,56 @@
 
 VENVDIR="venv"
 PIDFILE="summon_api_v3.pid"
+WEB_PIDFILE="web/webserver.pid"
+WEB_LOGFILE="logs/web.log"
+WEB_APP="web/website.py"
+start_web() {
+    if [ -f "$WEB_PIDFILE" ]; then
+        if kill -0 $(cat "$WEB_PIDFILE") 2>/dev/null; then
+            echo "Web server is already running (PID $(cat $WEB_PIDFILE))"
+            return 0
+        else
+            echo "Stale PID file found for web server. Removing..."
+            rm -f "$WEB_PIDFILE"
+        fi
+    fi
+    if [ -z "$VIRTUAL_ENV" ]; then
+        echo "Activating venv for web..."
+        source "$VENVDIR/bin/activate"
+    else
+        echo "venv already active: $VIRTUAL_ENV"
+    fi
+    echo "Starting Flask web server (website.py) on 0.0.0.0:8080..."
+    nohup python3 "$WEB_APP" > "$WEB_LOGFILE" 2>&1 &
+    echo $! > "$WEB_PIDFILE"
+    echo "Started web server with PID $!"
+    sleep 1
+    echo "Web server started and running in background. See $WEB_LOGFILE for output."
+}
+
+stop_web() {
+    if [ -f "$WEB_PIDFILE" ] && kill -0 $(cat "$WEB_PIDFILE") 2>/dev/null; then
+        echo "Stopping web server (PID $(cat $WEB_PIDFILE))..."
+        kill $(cat "$WEB_PIDFILE") && rm -f "$WEB_PIDFILE"
+        echo "Stopped web server."
+    else
+        echo "Web server is not running."
+    fi
+}
+
+status_web() {
+    if [ -f "$WEB_PIDFILE" ] && kill -0 $(cat "$WEB_PIDFILE") 2>/dev/null; then
+        echo "Web server is running (PID $(cat $WEB_PIDFILE))"
+    else
+        echo "Web server is not running."
+    fi
+}
+
+restart_web() {
+    stop_web
+    sleep 1
+    start_web
+}
 LOGFILE="logs/api.log"
 APP="nfc_api.py"
 PYTHON="python3"
@@ -222,14 +272,59 @@ start() {
         status-minecraft)
             status_minecraft
             ;;
+        start-web)
+            start_web
+            ;;
+        stop-web)
+            stop_web
+            ;;
+        restart-web)
+            restart_web
+            ;;
+        status-web)
+            status_web
+            ;;
         start-all)
-            start_all
+            start_minecraft
+            sleep 2
+            if [ -z "$VIRTUAL_ENV" ]; then
+                echo "Activating venv..."
+                source "$VENVDIR/bin/activate"
+            else
+                echo "venv already active: $VIRTUAL_ENV"
+            fi
+            start
+            start_web
             ;;
         restart-all)
-            restart_all
+            screen -wipe > /dev/null 2>&1
+            stop
+            stop_minecraft
+            stop_web
+            sleep 2
+            start_minecraft
+            sleep 2
+            if [ -z "$VIRTUAL_ENV" ]; then
+                echo "Activating venv..."
+                source "$VENVDIR/bin/activate"
+            else
+                echo "venv already active: $VIRTUAL_ENV"
+            fi
+            start
+            start_web
             ;;
         status-all)
-            status_all
+            echo "--- Summon API v3 Status ---"
+            status
+            echo "API log: $LOGFILE"
+            echo
+            echo "--- Web Server Status ---"
+            status_web
+            echo "Web log: $WEB_LOGFILE"
+            echo
+            echo "--- Minecraft Server Status ---"
+            status_minecraft
+            echo "Minecraft log: $MINECRAFT_DIR/bedrock_server.log"
             ;;
         help)
             help

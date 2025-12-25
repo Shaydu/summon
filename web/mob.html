@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mob Details</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;padding:18px}
+    img{width:128px;height:128px;border:1px solid #ddd;padding:6px;background:#fff}
+    table{border-collapse:collapse;width:100%}
+    th,td{border:1px solid #eee;padding:8px;text-align:left}
+  </style>
+</head>
+<body>
+  <a href="/web/index.html">← Back</a>
+  <h1 id="title">Loading...</h1>
+  <div id="img"></div>
+  <h2>Find Log</h2>
+  <div id="summons">Loading...</div>
+
+  <script>
+    function q(name){ const u=new URL(location.href); return u.searchParams.get(name); }
+    async function load(){
+      const name = q('name'); if(!name){ document.getElementById('title').innerText='No mob specified'; return }
+      const key = localStorage.getItem('api_key') || prompt('Enter API key (x-api-key):'); if(!key) return;
+      const res = await fetch('/mobs/' + encodeURIComponent(name), { headers: { 'x-api-key': key } });
+      if(!res.ok){ document.getElementById('title').innerText='Not found'; return }
+      const data = await res.json();
+      document.getElementById('title').innerText = data.name;
+      document.getElementById('img').innerHTML = `<img src="${data.image}" alt="${data.name}">`;
+      const sEl = document.getElementById('summons'); sEl.innerHTML = '';
+      if(!data.summons || data.summons.length===0){ sEl.innerText = 'No finds recorded.'; return }
+      const tbl = document.createElement('table');
+      const h = document.createElement('tr'); h.innerHTML = '<th>#</th><th>Scanner</th><th>Target</th><th>Time</th><th>GPS</th><th>Map</th>';
+      tbl.appendChild(h);
+      data.summons.forEach((it, idx) => {
+        const tr = document.createElement('tr');
+        const gps = (it.gps_lat!==null && it.gps_lon!==null) ? `${it.gps_lat.toFixed(5)}, ${it.gps_lon.toFixed(5)}` : '';
+        const mapLink = it.map_url ? `<a href="${it.map_url}" target="_blank">map</a>` : '';
+        tr.innerHTML = `<td>${idx+1}</td><td>${it.summoning_player||''}</td><td>${it.summoned_player||''}</td><td>${it.timestamp_utc||''}</td><td>${gps}</td><td>${mapLink}</td>`;
+        tbl.appendChild(tr);
+      });
+      sEl.appendChild(tbl);
+    }
+    load().catch(e=>{document.getElementById('title').innerText='Error';console.error(e)})
+  </script>
+</body>
+</html>
