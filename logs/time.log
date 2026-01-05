@@ -716,3 +716,19 @@
 2025-12-29 07:11:51,881 INFO Time executed: time set day
 2025-12-29 07:13:26,165 INFO Received time request: {'time': 'day'}
 2025-12-29 07:13:26,183 INFO Time executed: time set day
+2026-01-05 13:22:19,627 INFO Received time request: {'time': 'day'}
+2026-01-05 13:22:19,627 INFO Time executed: time set day
+2026-01-05 13:22:19,629 INFO Received time request: {'time': 6000}
+2026-01-05 13:22:19,629 INFO Time executed: time set 6000
+2026-01-05 13:22:19,631 INFO Received time request: {}
+2026-01-05 13:22:19,631 ERROR Time error: Missing 'time' field
+2026-01-05 13:27:05,944 INFO Received time request: {'time': 'day'}
+2026-01-05 13:27:05,957 INFO Time executed: time set day
+2026-01-05 13:27:05,970 INFO Received time request: {'time': 'night'}
+2026-01-05 13:27:05,989 INFO Time executed: time set night
+2026-01-05 13:27:05,999 INFO Received time request: {'time': 6000}
+2026-01-05 13:27:06,019 INFO Time executed: time set 6000
+2026-01-05 13:27:06,029 INFO Received time request: {}
+2026-01-05 13:27:06,029 ERROR Time error: Missing 'time' field
+2026-01-05 13:27:06,041 INFO Received time request: {'time': 'invalid'}
+2026-01-05 13:27:06,041 ERROR Time error: Invalid named time; allowed: day, night

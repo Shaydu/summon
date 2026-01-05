@@ -1,3 +1,13 @@
+from flask import Flask, render_template_string, abort
+import ssl
+from mob_data import mob_metadata
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import summon_db
+
+app = Flask(__name__)
+
 PLAYER_LOG_TEMPLATE = '''
 <!DOCTYPE html>
 <html>
@@ -42,6 +52,62 @@ PLAYER_LOG_TEMPLATE = '''
 </body>
 </html>
 '''
+
+GLOBAL_LOG_TEMPLATE = '''
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Mob Discoveries</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .mob-list { display: flex; flex-wrap: wrap; gap: 15px; }
+        .mob-item { 
+            width: 150px; 
+            text-align: center; 
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        .mob-item:hover { background: #e9e9e9; }
+        .mob-item img { 
+            width: 100px; 
+            height: 100px; 
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .mob-name { 
+            font-weight: bold; 
+            color: #333;
+            text-decoration: none;
+        }
+        .mob-count {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        a { text-decoration: none; color: inherit; }
+    </style>
+</head>
+<body>
+    <h1>All Discovered Mobs</h1>
+    <p>{{ total_count }} total summons across {{ mobs|length }} different mob types</p>
+    <div class="mob-list">
+        {% for mob in mobs %}
+        <div class="mob-item">
+            <a href="/mob/{{ mob.mob_id }}">
+                <img src="/mob_images/{{ mob.mob_id }}.png" alt="" onerror="this.src='/mob/{{ mob.mob_id }}.png'">
+                <div class="mob-name">{{ mob.mob_id }}</div>
+                <div class="mob-count">{{ mob.count }} summon{{ 's' if mob.count != 1 else '' }}</div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+'''
+
 # Player log page
 @app.route('/player/<player_name>')
 def player_log(player_name):
@@ -55,42 +121,6 @@ def player_log(player_name):
             'gps_lon': entry.get('gps_lon'),
         })
     return render_template_string(PLAYER_LOG_TEMPLATE, player_name=player_name, discoveries=discoveries)
-GLOBAL_LOG_TEMPLATE = '''
-<!DOCTYPE html>
-<html>
-<head>
-    <title>All Mob Discoveries</title>
-    <style>
-        body { font-family: Arial; }
-        .mob-list { display: flex; flex-wrap: wrap; }
-        .mob-item { margin: 10px; text-align: center; }
-        .mob-item img { width: 100px; height: 100px; object-fit: contain; }
-    </style>
-</head>
-<body>
-    <h1>All Mobs</h1>
-    <div class="mob-list">
-        {% for mob_id, mob in mobs.items() %}
-        <div class="mob-item">
-            <a href="/mob/{{ mob_id }}">
-                <img src="/mob/{{ mob_id }}.png" alt="{{ mob.name }}"><br>
-                {{ mob.name }}
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-</body>
-</html>
-'''
-from flask import Flask, render_template_string, abort
-import ssl
-from mob_data import mob_metadata
-import os
-import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-import summon_db
-
-app = Flask(__name__)
 
 LIST_TEMPLATE = '''
 <!DOCTYPE html>
@@ -168,12 +198,34 @@ DETAIL_TEMPLATE = '''
 # Home page redirects to the global log
 @app.route('/')
 def home():
-    return render_template_string(GLOBAL_LOG_TEMPLATE, mobs=mob_metadata)
+    # Get all unique mob types from database with counts
+    all_summons = summon_db.get_all_summons()
+    mob_counts = {}
+    for summon in all_summons:
+        mob_id = summon.get('summoned_object_type', 'unknown')
+        mob_counts[mob_id] = mob_counts.get(mob_id, 0) + 1
+    
+    # Convert to list for template
+    mobs = [{'mob_id': mob_id, 'count': count} for mob_id, count in sorted(mob_counts.items())]
+    total_count = sum(mob_counts.values())
+    
+    return render_template_string(GLOBAL_LOG_TEMPLATE, mobs=mobs, total_count=total_count)
 
 # Global log page (all mobs)
 @app.route('/log')
 def global_log():
-    return render_template_string(GLOBAL_LOG_TEMPLATE, mobs=mob_metadata)
+    # Get all unique mob types from database with counts
+    all_summons = summon_db.get_all_summons()
+    mob_counts = {}
+    for summon in all_summons:
+        mob_id = summon.get('summoned_object_type', 'unknown')
+        mob_counts[mob_id] = mob_counts.get(mob_id, 0) + 1
+    
+    # Convert to list for template
+    mobs = [{'mob_id': mob_id, 'count': count} for mob_id, count in sorted(mob_counts.items())]
+    total_count = sum(mob_counts.values())
+    
+    return render_template_string(GLOBAL_LOG_TEMPLATE, mobs=mobs, total_count=total_count)
 
 @app.route('/mob/<mob_id>')
 def mob_detail(mob_id):

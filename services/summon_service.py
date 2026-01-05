@@ -30,6 +30,29 @@ def handle_sync_batch(data: Any) -> Dict[str, Any]:
                     "field": field,
                     "message": f"{field} is required"
                 })
+        
+        # Validate max lengths per v3.6 spec
+        if "token_id" in summon and isinstance(summon["token_id"], str) and len(summon["token_id"]) > 64:
+            errors.append({
+                "token_id": summon.get("token_id", "<unknown>"),
+                "field": "token_id",
+                "message": "token_id must not exceed 64 characters"
+            })
+        
+        if "player_id" in summon and isinstance(summon["player_id"], str) and len(summon["player_id"].strip()) > 64:
+            errors.append({
+                "token_id": summon.get("token_id", "<unknown>"),
+                "field": "player_id",
+                "message": "player_id must not exceed 64 characters"
+            })
+        
+        if "summon_type" in summon and isinstance(summon["summon_type"], str) and len(summon["summon_type"].strip()) > 64:
+            errors.append({
+                "token_id": summon.get("token_id", "<unknown>"),
+                "field": "summon_type",
+                "message": "summon_type must not exceed 64 characters"
+            })
+        
         # location must be an object with x, y, z
         if "location" in summon and isinstance(summon["location"], dict):
             for coord in ["x", "y", "z"]:
@@ -45,6 +68,7 @@ def handle_sync_batch(data: Any) -> Dict[str, Any]:
                 "field": "location",
                 "message": "location must be an object with x, y, z"
             })
+        
         # metadata must be an object
         if "metadata" not in summon or not isinstance(summon["metadata"], dict):
             errors.append({
@@ -52,6 +76,32 @@ def handle_sync_batch(data: Any) -> Dict[str, Any]:
                 "field": "metadata",
                 "message": "metadata must be an object"
             })
+        else:
+            # Validate metadata fields per v3.6 spec
+            metadata = summon["metadata"]
+            if "custom_name" in metadata and isinstance(metadata["custom_name"], str) and len(metadata["custom_name"]) > 32:
+                errors.append({
+                    "token_id": summon.get("token_id", "<unknown>"),
+                    "field": "metadata.custom_name",
+                    "message": "custom_name must not exceed 32 characters"
+                })
+            
+            if "level" in metadata:
+                try:
+                    level = int(metadata["level"])
+                    if level < 1 or level > 100:
+                        errors.append({
+                            "token_id": summon.get("token_id", "<unknown>"),
+                            "field": "metadata.level",
+                            "message": "level must be between 1 and 100"
+                        })
+                except (ValueError, TypeError):
+                    errors.append({
+                        "token_id": summon.get("token_id", "<unknown>"),
+                        "field": "metadata.level",
+                        "message": "level must be an integer"
+                    })
+    
     if errors:
         return {"status": "error", "errors": errors}
     # If all valid, return success

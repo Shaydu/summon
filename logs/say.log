@@ -206,3 +206,13 @@
 2025-12-28 07:42:28,740 INFO Say executed: say Hello from woom32!
 2025-12-28 07:42:58,719 INFO Received say request: {'message': 'Hello from woom32!'}
 2025-12-28 07:42:58,736 INFO Say executed: say Hello from woom32!
+2026-01-05 13:22:19,607 INFO Received say request: {'message': 'Hello, world!'}
+2026-01-05 13:22:19,620 INFO Say executed: say Hello, world!
+2026-01-05 13:22:19,622 INFO Received say request: {}
+2026-01-05 13:22:19,623 ERROR Say error: Missing or invalid 'message' field
+2026-01-05 13:27:06,055 INFO Received say request: {'message': 'Hello from automated tests!'}
+2026-01-05 13:27:06,074 INFO Say executed: say Hello from automated tests!
+2026-01-05 13:27:06,085 INFO Received say request: {}
+2026-01-05 13:27:06,085 ERROR Say error: Missing or invalid 'message' field
+2026-01-05 13:27:06,096 INFO Received say request: {'message': ''}
+2026-01-05 13:27:06,096 ERROR Say error: Missing or invalid 'message' field

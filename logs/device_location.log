@@ -1,0 +1,152 @@
+2026-01-05 13:22:12,347 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.758, 'gps_lon': -105.3009, 'gps_alt': 1655.3, 'gps_speed': 0.0, 'satellites': 8, 'hdop': 1.2, 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,348 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.758000, lon=-105.300900
+2026-01-05 13:22:12,351 INFO Received device location request: {'device_id': 'esp32-test-device', 'gps_lat': 37.7749, 'gps_lon': -122.4194, 'timestamp': '2025-12-25T23:00:00Z'}
+2026-01-05 13:22:12,353 INFO Device location logged: device_id=esp32-test-device, lat=37.774900, lon=-122.419400
+2026-01-05 13:22:12,355 INFO Received device location request: {'gps_lat': 40.758, 'gps_lon': -105.3009, 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,355 ERROR Missing or invalid device_id
+2026-01-05 13:22:12,357 INFO Received device location request: {'device_id': '', 'gps_lat': 40.758, 'gps_lon': -105.3009, 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,357 ERROR Missing or invalid device_id
+2026-01-05 13:22:12,360 INFO Received device location request: {'device_id': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'gps_lat': 40.758, 'gps_lon': -105.3009, 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,360 ERROR device_id exceeds max length: 65
+2026-01-05 13:22:12,363 INFO Received device location request: {'device_id': 'esp32-test', 'gps_lon': -105.3009, 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,363 ERROR Missing gps_lat
+2026-01-05 13:22:12,366 INFO Received device location request: {'device_id': 'esp32-test', 'gps_lat': 40.758, 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,366 ERROR Missing gps_lon
+2026-01-05 13:22:12,368 INFO Received device location request: {'device_id': 'esp32-test', 'gps_lat': -91.0, 'gps_lon': -105.3009, 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,368 ERROR Invalid gps_lat: -91.000000 (must be between -90 and 90)
+2026-01-05 13:22:12,370 INFO Received device location request: {'device_id': 'esp32-test', 'gps_lat': 91.0, 'gps_lon': -105.3009, 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,371 ERROR Invalid gps_lat: 91.000000 (must be between -90 and 90)
+2026-01-05 13:22:12,373 INFO Received device location request: {'device_id': 'esp32-test', 'gps_lat': 40.758, 'gps_lon': -181.0, 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,373 ERROR Invalid gps_lon: -181.000000 (must be between -180 and 180)
+2026-01-05 13:22:12,375 INFO Received device location request: {'device_id': 'esp32-test', 'gps_lat': 40.758, 'gps_lon': 181.0, 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,375 ERROR Invalid gps_lon: 181.000000 (must be between -180 and 180)
+2026-01-05 13:22:12,377 INFO Received device location request: {'device_id': 'esp32-test', 'gps_lat': 'not a number', 'gps_lon': -105.3009, 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,377 ERROR gps_lat is not a valid number: not a number
+2026-01-05 13:22:12,380 INFO Received device location request: {'device_id': 'esp32-test', 'gps_lat': 40.758, 'gps_lon': 'not a number', 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,380 ERROR gps_lon is not a valid number: not a number
+2026-01-05 13:22:12,383 INFO Received device location request: {'device_id': 'esp32-test', 'gps_lat': 40.758, 'gps_lon': -105.3009}
+2026-01-05 13:22:12,383 ERROR Missing or invalid timestamp
+2026-01-05 13:22:12,385 INFO Received device location request: {'device_id': 'esp32-test', 'gps_lat': 40.758, 'gps_lon': -105.3009, 'timestamp': ''}
+2026-01-05 13:22:12,385 ERROR Missing or invalid timestamp
+2026-01-05 13:22:12,387 INFO Received device location request: {'device_id': 'esp32-test', 'player': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'gps_lat': 40.758, 'gps_lon': -105.3009, 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,387 ERROR player exceeds max length: 65
+2026-01-05 13:22:12,390 INFO Received device location request: {'device_id': 'esp32-test', 'gps_lat': 40.758, 'gps_lon': -105.3009, 'satellites': 'eight', 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,390 ERROR satellites is not a valid integer: eight
+2026-01-05 13:22:12,393 INFO Received device location request: {'device_id': 'esp32-test', 'gps_lat': 40.758, 'gps_lon': -105.3009, 'hdop': 'invalid', 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,393 ERROR hdop is not a valid number: invalid
+2026-01-05 13:22:12,397 INFO Received device location request: 'not an object'
+2026-01-05 13:22:12,397 ERROR Request body is not a JSON object
+2026-01-05 13:22:12,399 INFO Received device location request: {'device_id': 'test', 'gps_lat': -90.0, 'gps_lon': -180.0, 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,401 INFO Device location logged: device_id=test, lat=-90.000000, lon=-180.000000
+2026-01-05 13:22:12,403 INFO Received device location request: {'device_id': 'test', 'gps_lat': 90.0, 'gps_lon': 180.0, 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,405 INFO Device location logged: device_id=test, lat=90.000000, lon=180.000000
+2026-01-05 13:22:12,406 INFO Received device location request: {'device_id': 'test', 'gps_lat': 0.0, 'gps_lon': 0.0, 'timestamp': '2025-12-25T22:30:00Z'}
+2026-01-05 13:22:12,408 INFO Device location logged: device_id=test, lat=0.000000, lon=0.000000
+2026-01-05 13:27:06,111 INFO Received device location request: {'device_id': 'test-device-001', 'gps_lat': 40.758, 'gps_lon': -105.3009, 'timestamp': '2026-01-05T20:27:05.982518+00:00'}
+2026-01-05 13:27:06,120 INFO Device location logged: device_id=test-device-001, lat=40.758000, lon=-105.300900
+2026-01-05 13:27:06,137 INFO Received device location request: {'device_id': 'test-device-002', 'player': 'TestPlayer', 'gps_lat': 37.7749, 'gps_lon': -122.4194, 'gps_alt': 52.5, 'gps_speed': 1.2, 'satellites': 8, 'hdop': 1.5, 'timestamp': '2026-01-05T12:00:00Z'}
+2026-01-05 13:27:06,141 INFO Device location logged: device_id=test-device-002, lat=37.774900, lon=-122.419400
+2026-01-05 13:27:06,167 INFO Received device location request: {'gps_lat': 40.758, 'gps_lon': -105.3009, 'timestamp': '2026-01-05T12:00:00Z'}
+2026-01-05 13:27:06,167 ERROR Missing or invalid device_id
+2026-01-05 13:27:06,180 INFO Received device location request: {'device_id': 'test-device', 'gps_lon': -105.3009, 'timestamp': '2026-01-05T12:00:00Z'}
+2026-01-05 13:27:06,180 ERROR Missing gps_lat
+2026-01-05 13:27:06,193 INFO Received device location request: {'device_id': 'test-device', 'gps_lat': 40.758, 'timestamp': '2026-01-05T12:00:00Z'}
+2026-01-05 13:27:06,193 ERROR Missing gps_lon
+2026-01-05 13:27:06,208 INFO Received device location request: {'device_id': 'test-device', 'gps_lat': 40.758, 'gps_lon': -105.3009}
+2026-01-05 13:27:06,208 ERROR Missing or invalid timestamp
+2026-01-05 13:27:06,231 INFO Received device location request: {'device_id': 'test-device', 'gps_lat': 91.0, 'gps_lon': -105.3009, 'timestamp': '2026-01-05T12:00:00Z'}
+2026-01-05 13:27:06,231 ERROR Invalid gps_lat: 91.000000 (must be between -90 and 90)
+2026-01-05 13:27:06,245 INFO Received device location request: {'device_id': 'test-device', 'gps_lat': -91.0, 'gps_lon': -105.3009, 'timestamp': '2026-01-05T12:00:00Z'}
+2026-01-05 13:27:06,245 ERROR Invalid gps_lat: -91.000000 (must be between -90 and 90)
+2026-01-05 13:27:06,258 INFO Received device location request: {'device_id': 'test-device', 'gps_lat': 40.758, 'gps_lon': 181.0, 'timestamp': '2026-01-05T12:00:00Z'}
+2026-01-05 13:27:06,259 ERROR Invalid gps_lon: 181.000000 (must be between -180 and 180)
+2026-01-05 13:27:06,277 INFO Received device location request: {'device_id': 'test-device', 'gps_lat': 40.758, 'gps_lon': -181.0, 'timestamp': '2026-01-05T12:00:00Z'}
+2026-01-05 13:27:06,277 ERROR Invalid gps_lon: -181.000000 (must be between -180 and 180)
+2026-01-05 13:27:06,294 INFO Received device location request: {'device_id': 'test-device', 'gps_lat': 40.758, 'gps_lon': -105.3009, 'timestamp': 'not-a-timestamp'}
+2026-01-05 13:27:06,299 INFO Device location logged: device_id=test-device, lat=40.758000, lon=-105.300900
+2026-01-05 13:27:06,317 INFO Received device location request: {'device_id': 'test-device', 'gps_lat': 40.758, 'gps_lon': -105.3009, 'satellites': -1, 'timestamp': '2026-01-05T12:00:00Z'}
+2026-01-05 13:27:06,321 INFO Device location logged: device_id=test-device, lat=40.758000, lon=-105.300900
+2026-01-05 13:27:06,340 INFO Received device location request: {'device_id': 'test-device', 'gps_lat': 40.758, 'gps_lon': -105.3009, 'gps_speed': -1.0, 'timestamp': '2026-01-05T12:00:00Z'}
+2026-01-05 13:27:06,344 INFO Device location logged: device_id=test-device, lat=40.758000, lon=-105.300900
+2026-01-05 13:27:06,363 INFO Received device location request: {'device_id': 'test-device', 'gps_lat': -90.0, 'gps_lon': 0.0, 'timestamp': '2026-01-05T12:00:00Z'}
+2026-01-05 13:27:06,367 INFO Device location logged: device_id=test-device, lat=-90.000000, lon=0.000000
+2026-01-05 13:27:06,380 INFO Received device location request: {'device_id': 'test-device', 'gps_lat': 90.0, 'gps_lon': 0.0, 'timestamp': '2026-01-05T12:00:00Z'}
+2026-01-05 13:27:06,383 INFO Device location logged: device_id=test-device, lat=90.000000, lon=0.000000
+2026-01-05 13:27:06,396 INFO Received device location request: {'device_id': 'test-device', 'gps_lat': 0.0, 'gps_lon': -180.0, 'timestamp': '2026-01-05T12:00:00Z'}
+2026-01-05 13:27:06,400 INFO Device location logged: device_id=test-device, lat=0.000000, lon=-180.000000
+2026-01-05 13:27:06,414 INFO Received device location request: {'device_id': 'test-device', 'gps_lat': 0.0, 'gps_lon': 180.0, 'timestamp': '2026-01-05T12:00:00Z'}
+2026-01-05 13:27:06,417 INFO Device location logged: device_id=test-device, lat=0.000000, lon=180.000000
+2026-01-05 13:30:59,267 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.075845, 'gps_lon': -105.3008012, 'gps_alt': 1885.3, 'gps_speed': 0.07408, 'satellites': 12, 'hdop': 0.64, 'timestamp': '2026-01-05T12:30:59Z'}
+2026-01-05 13:30:59,279 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075845, lon=-105.300801
+2026-01-05 13:31:59,338 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.075847, 'gps_lon': -105.3008302, 'gps_alt': 1885, 'gps_speed': 0.12964, 'satellites': 12, 'hdop': 0.62, 'timestamp': '2026-01-05T12:31:59Z'}
+2026-01-05 13:31:59,349 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075847, lon=-105.300830
+2026-01-05 13:32:59,459 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07586333, 'gps_lon': -105.3007938, 'gps_alt': 1878.1, 'gps_speed': 0.0926, 'satellites': 12, 'hdop': 0.7, 'timestamp': '2026-01-05T12:32:59Z'}
+2026-01-05 13:32:59,470 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075863, lon=-105.300794
+2026-01-05 13:33:59,443 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07586333, 'gps_lon': -105.3007938, 'gps_alt': 1878.1, 'gps_speed': 0.0926, 'satellites': 12, 'hdop': 0.7, 'timestamp': '2026-01-05T12:33:59Z'}
+2026-01-05 13:33:59,454 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075863, lon=-105.300794
+2026-01-05 13:34:59,570 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.0758285, 'gps_lon': -105.300768, 'gps_alt': 1891, 'gps_speed': 0.01852, 'satellites': 12, 'hdop': 0.78, 'timestamp': '2026-01-05T12:34:59Z'}
+2026-01-05 13:34:59,576 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075829, lon=-105.300768
+2026-01-05 13:35:59,527 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07584717, 'gps_lon': -105.3007698, 'gps_alt': 1894.2, 'gps_speed': 0.05556, 'satellites': 12, 'hdop': 0.73, 'timestamp': '2026-01-05T12:35:59Z'}
+2026-01-05 13:35:59,538 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075847, lon=-105.300770
+2026-01-05 13:36:59,690 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07585517, 'gps_lon': -105.3007833, 'gps_alt': 1894, 'gps_speed': 0.01852, 'satellites': 12, 'hdop': 0.67, 'timestamp': '2026-01-05T12:36:59Z'}
+2026-01-05 13:36:59,701 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075855, lon=-105.300783
+2026-01-05 13:38:33,173 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07585733, 'gps_lon': -105.3007788, 'gps_alt': 1893.7, 'gps_speed': 0.07408, 'satellites': 12, 'hdop': 0.67, 'timestamp': '2026-01-05T12:38:32Z'}
+2026-01-05 13:38:33,183 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075857, lon=-105.300779
+2026-01-05 13:39:33,278 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07586017, 'gps_lon': -105.3008012, 'gps_alt': 1893.7, 'gps_speed': 0.05556, 'satellites': 12, 'hdop': 0.67, 'timestamp': '2026-01-05T12:39:33Z'}
+2026-01-05 13:39:33,289 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075860, lon=-105.300801
+2026-01-05 13:40:58,906 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.075837, 'gps_lon': -105.3007957, 'gps_alt': 1891.9, 'gps_speed': 0.11112, 'satellites': 12, 'hdop': 0.73, 'timestamp': '2026-01-05T12:40:58Z'}
+2026-01-05 13:40:58,917 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075837, lon=-105.300796
+2026-01-05 13:41:58,991 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07583, 'gps_lon': -105.3008072, 'gps_alt': 1889.7, 'gps_speed': 0.0926, 'satellites': 12, 'hdop': 0.69, 'timestamp': '2026-01-05T12:41:58Z'}
+2026-01-05 13:41:59,009 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075830, lon=-105.300807
+2026-01-05 13:43:54,522 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07582367, 'gps_lon': -105.3007937, 'gps_alt': 1880.4, 'gps_speed': 0.0926, 'satellites': 12, 'hdop': 0.7, 'timestamp': '2026-01-05T12:43:54Z'}
+2026-01-05 13:43:54,540 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075824, lon=-105.300794
+2026-01-05 13:44:54,597 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.0758075, 'gps_lon': -105.3007997, 'gps_alt': 1877.2, 'gps_speed': 0.05556, 'satellites': 12, 'hdop': 0.68, 'timestamp': '2026-01-05T12:44:54Z'}
+2026-01-05 13:44:54,608 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075808, lon=-105.300800
+2026-01-05 13:45:54,723 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.0758135, 'gps_lon': -105.3007952, 'gps_alt': 1874.8, 'gps_speed': 0.03704, 'satellites': 12, 'hdop': 0.68, 'timestamp': '2026-01-05T12:45:54Z'}
+2026-01-05 13:45:54,734 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075814, lon=-105.300795
+2026-01-05 13:46:54,712 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07582283, 'gps_lon': -105.3007898, 'gps_alt': 1881.3, 'gps_speed': 0.07408, 'satellites': 12, 'hdop': 0.76, 'timestamp': '2026-01-05T12:46:54Z'}
+2026-01-05 13:46:54,723 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075823, lon=-105.300790
+2026-01-05 13:47:54,760 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07584067, 'gps_lon': -105.3007935, 'gps_alt': 1886, 'gps_speed': 0.07408, 'satellites': 12, 'hdop': 0.69, 'timestamp': '2026-01-05T12:47:54Z'}
+2026-01-05 13:47:54,771 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075841, lon=-105.300793
+2026-01-05 13:49:12,578 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07584967, 'gps_lon': -105.3007937, 'gps_alt': 1887.2, 'gps_speed': 0.14816, 'satellites': 12, 'hdop': 0.78, 'timestamp': '2026-01-05T12:49:12Z'}
+2026-01-05 13:49:12,589 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075850, lon=-105.300794
+2026-01-05 13:50:12,627 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07585117, 'gps_lon': -105.3007958, 'gps_alt': 1887.1, 'gps_speed': 0.05556, 'satellites': 12, 'hdop': 0.7, 'timestamp': '2026-01-05T12:50:12Z'}
+2026-01-05 13:50:12,638 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075851, lon=-105.300796
+2026-01-05 13:51:12,777 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07583667, 'gps_lon': -105.300793, 'gps_alt': 1884.3, 'gps_speed': 0, 'satellites': 12, 'hdop': 0.7, 'timestamp': '2026-01-05T12:51:12Z'}
+2026-01-05 13:51:12,788 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075837, lon=-105.300793
+2026-01-05 14:24:00,233 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07584567, 'gps_lon': -105.3007748, 'gps_alt': 1868.7, 'gps_speed': 0.03704, 'satellites': 7, 'hdop': 2.08, 'timestamp': '2026-01-05T13:24:00Z'}
+2026-01-05 14:24:00,244 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075846, lon=-105.300775
+2026-01-05 14:25:02,893 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07581067, 'gps_lon': -105.3007408, 'gps_alt': 1893.5, 'gps_speed': 0.07408, 'satellites': 9, 'hdop': 1.53, 'timestamp': '2026-01-05T13:25:02Z'}
+2026-01-05 14:25:02,895 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075811, lon=-105.300741
+2026-01-05 14:26:03,030 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.075823, 'gps_lon': -105.3007737, 'gps_alt': 1895.2, 'gps_speed': 0.0926, 'satellites': 12, 'hdop': 0.9, 'timestamp': '2026-01-05T13:26:02Z'}
+2026-01-05 14:26:03,035 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075823, lon=-105.300774
+2026-01-05 14:27:03,019 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.0758195, 'gps_lon': -105.300768, 'gps_alt': 1894.3, 'gps_speed': 0.11112, 'satellites': 12, 'hdop': 0.85, 'timestamp': '2026-01-05T13:27:02Z'}
+2026-01-05 14:27:03,024 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075820, lon=-105.300768
+2026-01-05 14:28:03,135 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07582433, 'gps_lon': -105.3007802, 'gps_alt': 1893.3, 'gps_speed': 0.12964, 'satellites': 12, 'hdop': 0.85, 'timestamp': '2026-01-05T13:28:02Z'}
+2026-01-05 14:28:03,141 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075824, lon=-105.300780
+2026-01-05 14:29:03,139 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.075838, 'gps_lon': -105.3007857, 'gps_alt': 1889.7, 'gps_speed': 0, 'satellites': 12, 'hdop': 0.85, 'timestamp': '2026-01-05T13:29:02Z'}
+2026-01-05 14:29:03,144 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075838, lon=-105.300786
+2026-01-05 14:30:03,145 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07583583, 'gps_lon': -105.3008088, 'gps_alt': 1891.4, 'gps_speed': 0, 'satellites': 12, 'hdop': 0.85, 'timestamp': '2026-01-05T13:30:02Z'}
+2026-01-05 14:30:03,150 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075836, lon=-105.300809
+2026-01-05 14:33:24,363 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07583033, 'gps_lon': -105.3008088, 'gps_alt': 1892.3, 'gps_speed': 0.05556, 'satellites': 12, 'hdop': 0.86, 'timestamp': '2026-01-05T13:33:24Z'}
+2026-01-05 14:33:24,368 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075830, lon=-105.300809
+2026-01-05 14:34:24,471 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.075847, 'gps_lon': -105.3007983, 'gps_alt': 1885.8, 'gps_speed': 0.12964, 'satellites': 12, 'hdop': 0.79, 'timestamp': '2026-01-05T13:34:24Z'}
+2026-01-05 14:34:24,475 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075847, lon=-105.300798
+2026-01-05 14:36:39,125 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.075829, 'gps_lon': -105.3007997, 'gps_alt': 1886.4, 'gps_speed': 0.07408, 'satellites': 12, 'hdop': 0.75, 'timestamp': '2026-01-05T13:36:39Z'}
+2026-01-05 14:36:39,136 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075829, lon=-105.300800
+2026-01-05 14:37:39,246 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.075815, 'gps_lon': -105.3008203, 'gps_alt': 1886.7, 'gps_speed': 0.14816, 'satellites': 12, 'hdop': 0.83, 'timestamp': '2026-01-05T13:37:39Z'}
+2026-01-05 14:37:39,258 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075815, lon=-105.300820
+2026-01-05 14:39:16,948 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.0758235, 'gps_lon': -105.3007957, 'gps_alt': 1883.1, 'gps_speed': 1.0186, 'satellites': 12, 'hdop': 0.77, 'timestamp': '2026-01-05T13:39:16Z'}
+2026-01-05 14:39:16,959 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075823, lon=-105.300796
+2026-01-05 14:40:16,862 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07579667, 'gps_lon': -105.3007713, 'gps_alt': 1882.5, 'gps_speed': 0.07408, 'satellites': 12, 'hdop': 1.2, 'timestamp': '2026-01-05T13:40:16Z'}
+2026-01-05 14:40:16,867 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075797, lon=-105.300771
+2026-01-05 14:41:16,911 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07579283, 'gps_lon': -105.3007948, 'gps_alt': 1883.5, 'gps_speed': 0.07408, 'satellites': 12, 'hdop': 0.75, 'timestamp': '2026-01-05T13:41:16Z'}
+2026-01-05 14:41:16,914 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075793, lon=-105.300795
+2026-01-05 14:42:17,062 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07579567, 'gps_lon': -105.3008153, 'gps_alt': 1881.1, 'gps_speed': 0.03704, 'satellites': 12, 'hdop': 0.75, 'timestamp': '2026-01-05T13:42:16Z'}
+2026-01-05 14:42:17,067 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075796, lon=-105.300815
+2026-01-05 14:43:17,071 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07581117, 'gps_lon': -105.3007983, 'gps_alt': 1880.6, 'gps_speed': 0.1852, 'satellites': 12, 'hdop': 0.69, 'timestamp': '2026-01-05T13:43:16Z'}
+2026-01-05 14:43:17,077 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075811, lon=-105.300798
+2026-01-05 14:44:17,063 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07579017, 'gps_lon': -105.3008068, 'gps_alt': 1882.9, 'gps_speed': 0.07408, 'satellites': 12, 'hdop': 0.77, 'timestamp': '2026-01-05T13:44:16Z'}
+2026-01-05 14:44:17,072 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075790, lon=-105.300807
+2026-01-05 14:45:17,189 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': 40.07577833, 'gps_lon': -105.300801, 'gps_alt': 1881.8, 'gps_speed': 0.14816, 'satellites': 12, 'hdop': 0.69, 'timestamp': '2026-01-05T13:45:16Z'}
+2026-01-05 14:45:17,194 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075778, lon=-105.300801

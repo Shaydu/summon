@@ -12,9 +12,10 @@ from services.chat_service import handle_chat
 from services.give_service import handle_give
 from services.say_service import handle_say
 from services.time_service import handle_time
+from services.device_location_service import handle_device_location
 
 
-app = FastAPI(title="NFC → Minecraft API v3.4")
+app = FastAPI(title="NFC → Minecraft API v3.6")
 # Serve resized mob images and web UI
 app.mount("/mob_images", StaticFiles(directory="web/mob_images"), name="mob_images")
 app.mount("/web", StaticFiles(directory="web"), name="web")
@@ -81,6 +82,16 @@ async def sync_batch_endpoint(request: Request, x_api_key: str = Header(...)):
     data = await request.json()
     from services.summon_service import handle_sync_batch
     resp = handle_sync_batch(data)
+    return JSONResponse(content=resp)
+
+
+@app.post("/api/device/location")
+async def device_location_endpoint(request: Request, x_api_key: str = Header(...)):
+    require_api_key(x_api_key)
+    data = await request.json()
+    resp = handle_device_location(data)
+    if isinstance(resp, dict) and resp.get("status") == "error":
+        return JSONResponse(content=resp, status_code=400)
     return JSONResponse(content=resp)
 
 
