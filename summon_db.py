@@ -1,3 +1,18 @@
+def get_summons_by_player(player_name: str):
+    """Return summons filtered by summoning_player (case-insensitive), most recent first."""
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT id, server_ip, server_port, summoned_object_type, summoning_player, summoned_player, timestamp_utc, gps_lat, gps_lon FROM summons WHERE LOWER(summoning_player)=? ORDER BY id DESC",
+        (player_name.lower(),)
+    )
+    rows = cur.fetchall()
+    conn.close()
+    result = []
+    for r in rows:
+        result.append({k: r[k] for k in r.keys()})
+    return result
 import sqlite3
 from datetime import datetime
 

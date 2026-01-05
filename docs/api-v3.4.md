@@ -1,3 +1,76 @@
+# NFC Token Interoperability and Field Mapping
+
+## NFC Token JSON Schema
+
+NFC tokens used by the Summon app and compatible clients must use the following canonical JSON schema (UTF-8 encoded):
+
+```
+{
+  "tokenId": "string (UUID, required, max 64)",
+  "player": "string (may be empty, filled at scan time)",
+  "action": "string (entity/item/action, required)",
+  "server": "string (hostname or IP, required)",
+  "port": "integer (1..65535, required)",
+  "timestamp": "string (ISO8601 UTC, required)",
+  "time": "string (optional, 'day' or 'night' for set_time tokens)"
+}
+```
+
+## Field Mapping: NFC Token → API Payload
+
+| NFC Token Field | API Field (snake_case)      | Notes |
+|-----------------|----------------------------|-------|
+| tokenId         | token_id                   | Required, unique per token |
+| player          | summoning_player / player_id| Used as actor/initiator |
+| action          | summoned_object_type / summon_type / minecraft_id | Entity/item/action identifier |
+| server          | server_ip                  | Target server |
+| port            | server_port                | Target port |
+| timestamp       | timestamp / summon_time    | ISO8601 UTC |
+| time            | time                       | Only for set_time tokens |
+
+When processing an NFC scan, the server or client must map camelCase fields from the token to the expected snake_case fields in API requests.
+
+## NDEF Record Format
+
+- NFC tokens are written as a single NDEF record.
+- The record type is Well-Known (0x54, "T") or MIME type application/json.
+- The payload is the raw JSON bytes (UTF-8), with no extra framing or text headers.
+- Readers MUST parse the payload as JSON regardless of record type.
+
+## Versioning and Security
+
+- If the schema changes, add a top-level `version` field (e.g., `"version": 1`).
+- Do not encode secrets or API keys in NFC payloads.
+- For sensitive use, consider encrypting the payload and distributing keys separately.
+
+## Example NFC Token JSON
+
+```
+{
+  "tokenId": "550e8400-e29b-41d4-a716-446655440000",
+  "player": "ActorPlayer",
+  "action": "piglin",
+  "server": "10.0.0.19",
+  "port": 19132,
+  "timestamp": "2025-12-22T12:00:00Z"
+}
+```
+
+For a set_time token:
+
+```
+{
+  "tokenId": "550e8400-e29b-41d4-a716-446655440001",
+  "player": "PlayerName",
+  "action": "set_time",
+  "server": "10.0.0.19",
+  "port": 19132,
+  "time": "day",
+  "timestamp": "2025-12-24T21:00:00Z"
+}
+```
+
+Clients and servers should support both summon and set_time tokens independently, and allow for future extension via the version field.
 # Say (Broadcast) Endpoint
 
 POST `/say`
