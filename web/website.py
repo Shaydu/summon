@@ -1,4 +1,4 @@
-from flask import Flask, render_template_string, abort
+from flask import Flask, render_template_string, abort, send_from_directory
 import ssl
 from mob_data import mob_metadata
 import os
@@ -6,7 +6,7 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import summon_db
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='mob_images', static_url_path='/mob_images')
 
 PLAYER_LOG_TEMPLATE = '''
 <!DOCTYPE html>
@@ -154,41 +154,84 @@ DETAIL_TEMPLATE = '''
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ mob.name }}</title>
+    <title>{{ mob_name }}</title>
     <style>
-        body { font-family: Arial; }
-        .mob-detail { max-width: 600px; margin: auto; }
-        .mob-detail img { width: 200px; height: 200px; object-fit: contain; }
+        body { font-family: Arial; padding: 20px; background: #f5f5f5; }
+        .mob-detail { max-width: 1000px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .mob-header { display: flex; align-items: center; gap: 30px; margin-bottom: 30px; border-bottom: 2px solid #ddd; padding-bottom: 20px; }
+        .mob-header img { width: 200px; height: 200px; object-fit: contain; border: 2px solid #ddd; border-radius: 8px; padding: 10px; background: #fafafa; }
+        .mob-info { flex: 1; }
+        .mob-info h1 { margin: 0 0 10px 0; font-size: 2em; color: #333; text-transform: capitalize; }
+        .mob-stats { color: #666; font-size: 1.1em; }
+        h2 { color: #333; margin: 30px 0 15px 0; }
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-        .map-link { font-size: 0.9em; }
+        th { background: #f0f0f0; font-weight: bold; padding: 12px; text-align: left; border-bottom: 2px solid #ddd; position: sticky; top: 0; }
+        td { border: 1px solid #eee; padding: 10px; vertical-align: top; }
+        tr:hover { background: #f9f9f9; }
+        .action-badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold; text-transform: uppercase; }
+        .action-summon { background: #4CAF50; color: white; }
+        .action-spawn { background: #2196F3; color: white; }
+        .action-give { background: #FF9800; color: white; }
+        .action-default { background: #757575; color: white; }
+        .map-link { color: #0366d6; text-decoration: none; }
+        .map-link:hover { text-decoration: underline; }
+        .back-link { display: inline-block; margin-top: 20px; color: #0366d6; text-decoration: none; }
+        .back-link:hover { text-decoration: underline; }
+        .empty-message { text-align: center; padding: 40px; color: #999; }
+        .timestamp { white-space: nowrap; }
     </style>
 </head>
 <body>
     <div class="mob-detail">
-        <h1>{{ mob.name }}</h1>
-        <img src="/mob/{{ mob_id }}.png" alt="{{ mob.name }}"><br>
-        <p>{{ mob.description }}</p>
-        <h2>Summoning Log</h2>
+        <div class="mob-header">
+            <img src="/mob_images/{{ mob_id }}.png" alt="{{ mob_name }}" onerror="this.src='/mob/{{ mob_id }}.png'">
+            <div class="mob-info">
+                <h1>{{ mob_name }}</h1>
+                <div class="mob-stats">
+                    <strong>{{ total_count }}</strong> total summons
+                    {% if action_counts %}
+                    <br>
+                    {% for action, count in action_counts.items() %}
+                        {{ action }}: {{ count }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <h2>Summon History</h2>
         <table>
-            <tr><th>Player</th><th>Date</th><th>Location</th></tr>
-            {% for entry in discoveries %}
             <tr>
-                <td>{{ entry.player }}</td>
-                <td>{{ entry.timestamp }}</td>
+                <th>Action</th>
+                <th>Player</th>
+                <th>Target</th>
+                <th>Date</th>
+                <th>Location</th>
+            </tr>
+            {% for entry in all_entries %}
+            <tr>
+                <td>
+                    <span class="action-badge action-{{ entry.action_type }}">{{ entry.action_type }}</span>
+                </td>
+                <td>{{ entry.summoning_player }}</td>
+                <td>{{ entry.summoned_player }}</td>
+                <td class="timestamp">{{ entry.timestamp }}</td>
                 <td>
                   {% if entry.gps_lat and entry.gps_lon %}
-                    <a class="map-link" href="https://maps.google.com/?q={{ entry.gps_lat }},{{ entry.gps_lon }}" target="_blank">{{ entry.gps_lat }},{{ entry.gps_lon }}</a>
+                    <a class="map-link" href="https://maps.google.com/?q={{ entry.gps_lat }},{{ entry.gps_lon }}" target="_blank">
+                        📍 {{ "%.4f"|format(entry.gps_lat) }}, {{ "%.4f"|format(entry.gps_lon) }}
+                    </a>
                   {% else %}
                     —
                   {% endif %}
                 </td>
             </tr>
             {% else %}
-            <tr><td colspan="3">No discoveries yet.</td></tr>
+            <tr><td colspan="5" class="empty-message">No summons recorded yet</td></tr>
             {% endfor %}
         </table>
-        <p><a href="/log">Back to all mobs</a></p>
+
+        <a href="/" class="back-link">← Back to all mobs</a>
     </div>
 </body>
 </html>
@@ -229,24 +272,61 @@ def global_log():
 
 @app.route('/mob/<mob_id>')
 def mob_detail(mob_id):
-    mob = mob_metadata.get(mob_id)
-    if not mob:
-        abort(404)
+    # Get all summons for this mob from database
     db_discoveries = summon_db.get_summons_by_mob(mob_id)
-    discoveries = []
+    
+    if not db_discoveries:
+        # Mob exists but no summons yet, or doesn't exist
+        return render_template_string(DETAIL_TEMPLATE, 
+                                     mob_id=mob_id,
+                                     mob_name=mob_id.replace('_', ' ').title(),
+                                     total_count=0,
+                                     action_counts={},
+                                     actions=[],
+                                     all_entries=[],
+                                     entries_by_action={})
+    
+    # Organize data by action type
+    entries_by_action = {}
+    action_counts = {}
+    all_entries = []
+    
     for entry in db_discoveries:
-        discoveries.append({
-            'player': entry.get('summoning_player', ''),
+        action_type = entry.get('action_type', 'summon')
+        if action_type not in entries_by_action:
+            entries_by_action[action_type] = []
+            action_counts[action_type] = 0
+        
+        entry_data = {
+            'action_type': action_type,
+            'summoning_player': entry.get('summoning_player', ''),
+            'summoned_player': entry.get('summoned_player', ''),
             'timestamp': entry.get('timestamp_utc', ''),
             'gps_lat': entry.get('gps_lat'),
             'gps_lon': entry.get('gps_lon'),
-        })
-    return render_template_string(DETAIL_TEMPLATE, mob=mob, discoveries=discoveries, mob_id=mob_id)
+        }
+        entries_by_action[action_type].append(entry_data)
+        action_counts[action_type] += 1
+        all_entries.append(entry_data)
+    
+    actions = sorted(entries_by_action.keys())
+    total_count = len(all_entries)
+    mob_name = mob_id.replace('_', ' ').title()
+    
+    return render_template_string(DETAIL_TEMPLATE,
+                                 mob_id=mob_id,
+                                 mob_name=mob_name,
+                                 total_count=total_count,
+                                 action_counts=action_counts,
+                                 actions=actions,
+                                 all_entries=all_entries,
+                                 entries_by_action=entries_by_action)
 
-@app.route('/mob/<path:filename>')
-def mob_image(filename):
-    # Serve mob images from the mob/ directory
-    return app.send_static_file(os.path.join('mob', filename))
+@app.route('/mob/<filename>')
+def serve_mob_image(filename):
+    """Serve mob images from the mob/ directory as fallback"""
+    mob_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'mob'))
+    return send_from_directory(mob_dir, filename)
 
 if __name__ == '__main__':
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)

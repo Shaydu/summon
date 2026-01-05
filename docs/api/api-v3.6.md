@@ -12,6 +12,12 @@
 - Enables real-world tracking of NFC scanner devices
 - Supports offline queueing and periodic updates (recommended: 60 seconds)
 
+### GPS Coordinate Support
+- **Give Endpoint**: Now supports optional GPS coordinates (`gps_lat`, `gps_lon`) to track where items were given
+- **Summon Endpoint**: Already supports GPS coordinates for tracking spawn locations
+- **Device Location Endpoint**: Dedicated endpoint for continuous GPS tracking of NFC scanner devices
+- All GPS data stored in database for analytics and admin panel visualization
+
 ## Changes from v3.4
 
 ### Breaking Changes
@@ -29,16 +35,17 @@
 ## Table of Contents
 
 1. [Authentication](#authentication)
-2. [Give Item Endpoint](#give-item-endpoint)
-3. [Time Endpoint](#time-endpoint)
-4. [Say (Broadcast) Endpoint](#say-broadcast-endpoint)
-5. [Summon Endpoints](#summon-endpoints)
+2. [GPS Capabilities Overview](#gps-capabilities-overview) **NEW in v3.6**
+3. [Give Item Endpoint](#give-item-endpoint)
+4. [Time Endpoint](#time-endpoint)
+5. [Say (Broadcast) Endpoint](#say-broadcast-endpoint)
+6. [Summon Endpoints](#summon-endpoints)
    - [Immediate Summon (Game Server)](#immediate-summon-endpoint-game-server-target)
    - [Sync Endpoints (Central API)](#sync-endpoints-central-api)
-6. [Device Location Tracking](#device-location-tracking-endpoint) **NEW in v3.6**
-7. [NFC Token Processing](#nfc-token-processing)
-8. [Arduino Implementation Guide](#arduino-implementation-guide)
-9. [Minecraft Console Commands Reference](#minecraft-server-console-commands-reference)
+7. [Device Location Tracking](#device-location-tracking-endpoint) **NEW in v3.6**
+8. [NFC Token Processing](#nfc-token-processing)
+9. [Arduino Implementation Guide](#arduino-implementation-guide)
+10. [Minecraft Console Commands Reference](#minecraft-server-console-commands-reference)
 
 ---
 
@@ -50,6 +57,148 @@ All endpoints require an `x-api-key` (or `X-API-Key`) header with the configured
 ```
 x-api-key: super-secret-test-key22
 ```
+
+---
+
+## GPS Capabilities Overview
+
+The Summon API v3.6 provides comprehensive GPS coordinate tracking across multiple endpoints, enabling real-world location analytics for Minecraft gameplay events.
+
+### Supported Endpoints
+
+| Endpoint | GPS Support | Purpose | Required/Optional |
+|----------|-------------|---------|-------------------|
+| `POST /give` | ✅ Yes | Track where items are given | Optional |
+| `POST /summon` | ✅ Yes | Track where entities are summoned | Optional |
+| `POST /api/device/location` | ✅ Yes | Track device GPS positions | Required |
+
+### GPS Fields
+
+**Standard GPS Fields (supported across all endpoints):**
+- `gps_lat` (number): Latitude coordinate (-90 to 90)
+- `gps_lon` (number): Longitude coordinate (-180 to 180)
+- `device_id` (string): Device identifier for tracking which scanner was used
+- `timestamp` (string): ISO8601 UTC timestamp of when the operation occurred
+
+**Extended GPS Fields (device location endpoint only):**
+- `gps_alt` (number): Altitude in meters above sea level
+- `gps_speed` (number): Speed in km/h
+- `satellites` (integer): Number of GPS satellites in view
+- `hdop` (number): Horizontal Dilution of Precision (accuracy indicator)
+- `player` (string): Optional player name associated with the location
+
+### Use Cases
+
+**1. NFC Scanner Tracking (`/api/device/location`)**
+- Continuously track ESP32 NFC scanner devices in real-world locations
+- Display scanner positions on admin panel map
+- Monitor device battery and GPS signal quality
+- Recommended update interval: 60 seconds
+
+**2. Event Location Analytics (`/give`, `/summon`)**
+- Record where NFC tokens were scanned
+- Analyze which locations are most popular for gameplay
+- Detect patterns in token usage across physical locations
+- Correlate in-game events with real-world positions
+
+**3. Geofencing & Zone Detection**
+- Trigger special items/entities based on scanner location
+- Create location-based gameplay mechanics
+- Restrict certain tokens to specific geographic areas
+- Track player movement patterns
+
+### Database Storage
+
+GPS coordinates are stored in PostgreSQL database tables:
+
+**`give_operations` table:**
+```sql
+CREATE TABLE give_operations (
+    id SERIAL PRIMARY KEY,
+    player VARCHAR(64) NOT NULL,
+    item VARCHAR(64) NOT NULL,
+    amount INTEGER NOT NULL,
+    timestamp TIMESTAMP NOT NULL,
+    gps_lat DOUBLE PRECISION,
+    gps_lon DOUBLE PRECISION,
+    device_id VARCHAR(64),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+**`summons` table:**
+```sql
+CREATE TABLE summons (
+    id SERIAL PRIMARY KEY,
+    server_ip VARCHAR(64),
+    server_port INTEGER,
+    summoned_object_type VARCHAR(64),
+    summoning_player VARCHAR(64),
+    summoned_player VARCHAR(64),
+    timestamp_utc TIMESTAMP,
+    gps_lat DOUBLE PRECISION,
+    gps_lon DOUBLE PRECISION
+);
+```
+
+**`device_locations` table:**
+```sql
+CREATE TABLE device_locations (
+    id SERIAL PRIMARY KEY,
+    device_id VARCHAR(64) NOT NULL,
+    player VARCHAR(64),
+    gps_lat DOUBLE PRECISION NOT NULL,
+    gps_lon DOUBLE PRECISION NOT NULL,
+    gps_alt DOUBLE PRECISION,
+    gps_speed DOUBLE PRECISION,
+    satellites INTEGER,
+    hdop DOUBLE PRECISION,
+    timestamp TIMESTAMP NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### Example Analytics Queries
+
+**Find most popular give locations:**
+```sql
+SELECT 
+    ROUND(gps_lat::numeric, 3) as lat,
+    ROUND(gps_lon::numeric, 3) as lon,
+    COUNT(*) as total_gives,
+    ARRAY_AGG(DISTINCT item) as items_given
+FROM give_operations
+WHERE gps_lat IS NOT NULL AND gps_lon IS NOT NULL
+GROUP BY ROUND(gps_lat::numeric, 3), ROUND(gps_lon::numeric, 3)
+ORDER BY total_gives DESC
+LIMIT 10;
+```
+
+**Get all operations near a location (within ~1km):**
+```sql
+SELECT player, item, amount, gps_lat, gps_lon, timestamp
+FROM give_operations
+WHERE gps_lat BETWEEN 40.748 AND 40.768
+  AND gps_lon BETWEEN -105.310 AND -105.290
+ORDER BY timestamp DESC;
+```
+
+**Track device movement trail:**
+```sql
+SELECT gps_lat, gps_lon, satellites, hdop, timestamp
+FROM device_locations
+WHERE device_id = 'esp32-nfc-scanner-001'
+  AND timestamp > NOW() - INTERVAL '1 hour'
+ORDER BY timestamp ASC;
+```
+
+### Privacy Considerations
+
+- GPS coordinates are optional for `/give` and `/summon` endpoints
+- Device locations track device IDs, not personal user information
+- Consider implementing data retention policies (e.g., auto-delete GPS data older than 90 days)
+- Admin panel access should be restricted to authorized users only
+- Comply with local privacy regulations regarding location data collection
 
 ---
 
@@ -70,9 +219,14 @@ Gives an item to a player in-game using the Minecraft `give` command.
 | `player` | string | Yes | - | Max 64 chars, non-empty | Target player's Minecraft username |
 | `item` | string | Yes | - | Max 64 chars, non-empty, valid Minecraft item ID | Item to give (e.g., "emerald", "diamond_sword") |
 | `amount` | integer | No | 1 | 1-64 | Number of items to give |
+| `gps_lat` | number | No | - | -90 to 90 | GPS latitude where give operation occurred |
+| `gps_lon` | number | No | -180 to 180 | GPS longitude where give operation occurred |
+| `device_id` | string | No | - | Max 64 chars | Device ID that initiated the give operation |
+| `timestamp` | string | No | Current UTC time | ISO8601 format | When the give operation occurred |
 
 ### Request Body Example
 
+**Basic usage:**
 ```json
 {
   "player": "WiryHealer4014",
@@ -81,13 +235,43 @@ Gives an item to a player in-game using the Minecraft `give` command.
 }
 ```
 
+**With GPS coordinates (for tracking NFC scanner location):**
+```json
+{
+  "player": "WiryHealer4014",
+  "item": "diamond_sword",
+  "amount": 1,
+  "gps_lat": 40.7580,
+  "gps_lon": -105.3009,
+  "device_id": "esp32-nfc-scanner-001",
+  "timestamp": "2026-01-05T15:30:00Z"
+}
+```
+
 ### Curl Example
 
+**Basic usage:**
 ```bash
 curl -X POST http://10.0.0.19:8000/give \
   -H "Content-Type: application/json" \
   -H "x-api-key: super-secret-test-key22" \
   -d '{"player":"WiryHealer4014","item":"emerald","amount":1}'
+```
+
+**With GPS coordinates:**
+```bash
+curl -X POST http://10.0.0.19:8000/give \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: super-secret-test-key22" \
+  -d '{
+    "player": "WiryHealer4014",
+    "item": "diamond_sword",
+    "amount": 1,
+    "gps_lat": 40.7580,
+    "gps_lon": -105.3009,
+    "device_id": "esp32-nfc-scanner-001",
+    "timestamp": "2026-01-05T15:30:00Z"
+  }'
 ```
 
 ### Swift (URLSession) Example
