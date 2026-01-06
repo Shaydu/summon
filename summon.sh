@@ -24,7 +24,7 @@ start_web() {
         echo "venv already active: $VIRTUAL_ENV"
     fi
     echo "Starting Flask web server (website.py) on 0.0.0.0:8080..."
-    nohup python3 "$WEB_APP" > "$WEB_LOGFILE" 2>&1 &
+    nohup "$VENVDIR/bin/python" "$WEB_APP" > "$WEB_LOGFILE" 2>&1 &
     echo $! > "$WEB_PIDFILE"
     echo "Started web server with PID $!"
     sleep 1

@@ -2,20 +2,63 @@ TOKENS_MAP_TEMPLATE = '''
 <!DOCTYPE html>
 <html>
 <head>
-    <title>NFC Token Map</title>
+    <title>Summon - Token Map</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
+        :root {
+            --summon-purple: #8B4CB8;
+            --summon-teal: #1BC9C3;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+        
+        /* Site Header */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2000;
+            background: var(--summon-purple);
+            color: white;
+            padding: 15px 70px 15px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .site-header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin: 0;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: white;
+            color: var(--summon-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .site-header .tagline {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 2px;
+        }
         
         /* Hamburger Menu */
         .hamburger {
             position: fixed;
-            top: 20px;
+            top: 15px;
             right: 20px;
-            z-index: 1001;
+            z-index: 2001;
             background: white;
             border-radius: 8px;
             padding: 12px;
@@ -25,7 +68,7 @@ TOKENS_MAP_TEMPLATE = '''
         .hamburger div {
             width: 25px;
             height: 3px;
-            background: #333;
+            background: var(--summon-purple);
             margin: 5px 0;
             transition: 0.3s;
         }
@@ -35,7 +78,7 @@ TOKENS_MAP_TEMPLATE = '''
             position: fixed;
             top: 70px;
             right: 20px;
-            z-index: 1000;
+            z-index: 1999;
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.3);
@@ -49,14 +92,19 @@ TOKENS_MAP_TEMPLATE = '''
             text-decoration: none;
             color: #333;
             border-bottom: 1px solid #eee;
+            transition: background 0.2s;
         }
         .menu a:last-child { border-bottom: none; }
-        .menu a:hover { background: #f5f5f5; }
+        .menu a:hover { 
+            background: var(--summon-purple);
+            color: white;
+        }
         
         /* Map Container */
         #map {
             height: 100vh;
             width: 100%;
+            padding-top: 80px;
         }
         
         /* Stats Panel */
@@ -104,18 +152,24 @@ TOKENS_MAP_TEMPLATE = '''
         }
         .action-badge {
             display: inline-block;
-            padding: 3px 8px;
-            border-radius: 4px;
+            padding: 4px 10px;
+            border-radius: 6px;
             font-size: 11px;
             font-weight: bold;
             margin-bottom: 5px;
         }
         .action-summon { background: #e3f2fd; color: #1976d2; }
         .action-give { background: #fff3e0; color: #f57c00; }
-        .action-time { background: #f3e5f5; color: #7b1fa2; }
+        .action-time { background: var(--summon-purple); color: white; opacity: 0.9; }
     </style>
 </head>
 <body>
+    <!-- Site Header -->
+    <div class="site-header">
+        <h1><span class="logo-circle">◈</span>Summon</h1>
+        <div class="tagline">Token Discovery Map</div>
+    </div>
+    
     <!-- Hamburger Menu -->
     <div class="hamburger" onclick="toggleMenu()">
         <div></div>
@@ -138,19 +192,19 @@ TOKENS_MAP_TEMPLATE = '''
         <h3>📍 Token Statistics</h3>
         <div class="stat">
             <span class="stat-label">Total Tokens:</span>
-            <span>{{ total_tokens }}</span>
+            <span class="stat-value">{{ total_tokens }}</span>
         </div>
         <div class="stat">
             <span class="stat-label">Summon Entities:</span>
-            <span>{{ summon_count }}</span>
+            <span class="stat-value">{{ summon_count }}</span>
         </div>
         <div class="stat">
             <span class="stat-label">Give Items:</span>
-            <span>{{ give_count }}</span>
+            <span class="stat-value">{{ give_count }}</span>
         </div>
         <div class="stat">
             <span class="stat-label">Set Time:</span>
-            <span>{{ time_count }}</span>
+            <span class="stat-value">{{ time_count }}</span>
         </div>
     </div>
 
@@ -231,7 +285,7 @@ TOKENS_MAP_TEMPLATE = '''
             popupContent += `
                 <div class="popup-detail"><strong>Written by:</strong> ${token.written_by || 'Unknown'}</div>
                 <div class="popup-detail"><strong>Location:</strong> ${token.lat.toFixed(4)}, ${token.lon.toFixed(4)}</div>
-                <div class="popup-detail"><strong>Date:</strong> ${new Date(token.written_at).toLocaleString()}</div>
+                <div class="popup-detail"><strong>Date:</strong> ${new Date(token.written_at).toLocaleString('en-US', { timeZone: 'America/Denver', weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true, timeZoneName: 'short' })}</div>
             `;
             
             if (token.rarity) {

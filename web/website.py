@@ -14,19 +14,119 @@ PLAYER_LOG_TEMPLATE = '''
 <!DOCTYPE html>
 <html>
 <head>
-        <title>Player Log: {{ player_name }}</title>
+        <title>Summon - Player Log: {{ player_name }}</title>
         <style>
-                body { font-family: Arial; }
-                .player-log { max-width: 800px; margin: auto; }
-                table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-                th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-                .mob-link img { width: 50px; height: 50px; object-fit: contain; vertical-align: middle; }
-                .map-link { font-size: 0.9em; }
+                :root {
+                    --summon-purple: #8B4CB8;
+                    --summon-teal: #1BC9C3;
+                }
+                * { margin: 0; padding: 0; box-sizing: border-box; }
+                body { 
+                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+                    background: #ffffff;
+                    color: #333;
+                }
+                .site-header {
+                    background: var(--summon-purple);
+                    color: white;
+                    padding: 20px 30px;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                }
+                .site-header h1 {
+                    font-size: 32px;
+                    font-weight: bold;
+                    letter-spacing: 1px;
+                    margin: 0;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                }
+                .logo-circle {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background: white;
+                    color: var(--summon-purple);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 24px;
+                }
+                .site-header .tagline {
+                    font-size: 14px;
+                    color: rgba(255, 255, 255, 0.9);
+                    margin-top: 5px;
+                }
+                .player-log { 
+                    max-width: 1000px; 
+                    margin: 30px auto;
+                    padding: 0 30px;
+                }
+                .player-log h2 {
+                    color: var(--summon-purple);
+                    margin-bottom: 20px;
+                }
+                table { 
+                    width: 100%; 
+                    border-collapse: collapse; 
+                    margin-top: 20px;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+                    border-radius: 8px;
+                    overflow: hidden;
+                }
+                th { 
+                    background: var(--summon-purple);
+                    color: white;
+                    padding: 12px;
+                    text-align: left;
+                    font-weight: 600;
+                }
+                td { 
+                    border: 1px solid #f0f0f0; 
+                    padding: 10px; 
+                    text-align: left; 
+                }
+                tr:hover { background: #f9f9f9; }
+                .mob-link { 
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    color: inherit;
+                    text-decoration: none;
+                }
+                .mob-link:hover { color: var(--summon-purple); }
+                .mob-link img { 
+                    width: 50px; 
+                    height: 50px; 
+                    object-fit: contain;
+                    border: 1px solid #f0f0f0;
+                    border-radius: 6px;
+                    padding: 4px;
+                }
+                .map-link { 
+                    color: var(--summon-teal);
+                    text-decoration: none;
+                    font-weight: 500;
+                }
+                .map-link:hover { text-decoration: underline; }
+                .back-link {
+                    display: inline-block;
+                    margin-top: 20px;
+                    color: var(--summon-purple);
+                    text-decoration: none;
+                    font-weight: 600;
+                }
+                .back-link:hover { text-decoration: underline; }
         </style>
 </head>
 <body>
+        <div class="site-header">
+            <h1><span class="logo-circle">◈</span>Summon</h1>
+            <div class="tagline">Player Discovery Log</div>
+        </div>
         <div class="player-log">
-                <h1>Player Log: {{ player_name }}</h1>
+                <h2>Player Log: {{ player_name }}</h2>
                 <table>
                         <tr><th>Mob/Item</th><th>Date</th><th>Location</th></tr>
                         {% for entry in discoveries %}
@@ -49,7 +149,7 @@ PLAYER_LOG_TEMPLATE = '''
                         <tr><td colspan="3">No discoveries yet.</td></tr>
                         {% endfor %}
                 </table>
-                <p><a href="/log">Back to all mobs</a></p>
+                <a href="/log" class="back-link">← Back to all mobs</a>
         </div>
 </body>
 </html>
@@ -59,37 +159,101 @@ GLOBAL_LOG_TEMPLATE = '''
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mob Browser</title>
+    <title>Summon - Mob Browser</title>
     <style>
-        body { font-family: Arial; padding: 20px; }
-        .header { margin-bottom: 20px; }
+        :root {
+            --summon-purple: #8B4CB8;
+            --summon-teal: #1BC9C3;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background: #ffffff;
+            color: #333;
+        }
+        .site-header {
+            background: var(--summon-purple);
+            color: white;
+            padding: 25px 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .site-header h1 {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin: 0;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: white;
+            color: var(--summon-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+        }
+        .site-header .tagline {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 5px;
+        }
+        .content {
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header { margin-bottom: 25px; }
+        .header h2 {
+            color: var(--summon-purple);
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
         .toggle-container { margin: 20px 0; }
         .toggle-btn { 
-            padding: 10px 20px;
+            padding: 12px 24px;
             margin-right: 10px;
-            border: 2px solid #ddd;
-            background: #f9f9f9;
+            border: 2px solid var(--summon-purple);
+            background: white;
+            color: var(--summon-purple);
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1em;
+            font-weight: 600;
+            transition: all 0.2s;
         }
         .toggle-btn.active { 
-            background: #4CAF50;
+            background: var(--summon-purple);
             color: white;
-            border-color: #4CAF50;
         }
-        .toggle-btn:hover { background: #e9e9e9; }
-        .toggle-btn.active:hover { background: #45a049; }
-        .mob-list { display: flex; flex-wrap: wrap; gap: 15px; }
+        .toggle-btn:hover { 
+            background: var(--summon-purple);
+            color: white;
+        }
+        .toggle-btn.active:hover { 
+            background: #7339a3;
+        }
+        .mob-list { display: flex; flex-wrap: wrap; gap: 20px; }
         .mob-item { 
             width: 150px; 
             text-align: center; 
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
-            background: #f9f9f9;
+            border: 2px solid #f0f0f0;
+            padding: 15px;
+            border-radius: 12px;
+            background: white;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        .mob-item:hover { background: #e9e9e9; }
+        .mob-item:hover { 
+            border-color: var(--summon-purple);
+            box-shadow: 0 4px 12px rgba(139, 76, 184, 0.3);
+            transform: translateY(-2px);
+        }
         .mob-item img { 
             width: 100px; 
             height: 100px; 
@@ -98,14 +262,16 @@ GLOBAL_LOG_TEMPLATE = '''
             margin: 0 auto 10px;
         }
         .mob-name { 
-            font-weight: bold; 
+            font-weight: 600; 
             color: #333;
             text-decoration: none;
+            margin-top: 8px;
         }
         .mob-count {
-            font-size: 0.9em;
-            color: #666;
+            <span class="logo-circle">◈</span>font-size: 0.85em;
+            color: var(--summon-teal);
             margin-top: 5px;
+            font-weight: 500;
         }
         .undiscovered {
             opacity: 0.5;
@@ -114,8 +280,13 @@ GLOBAL_LOG_TEMPLATE = '''
     </style>
 </head>
 <body>
+    <div class="site-header">
+        <h1><span class="logo-circle">◈</span>Summon</h1>
+        <div class="tagline">NFC Token Discovery & Mob Browser</div>
+    </div>
+    <div class="content">
     <div class="header">
-        <h1>Minecraft Mobs</h1>
+        <h2>Minecraft Mobs</h2>
         <div class="toggle-container">
             <button class="toggle-btn {% if not show_discovered_only %}active{% endif %}" onclick="window.location.href='/'">
                 All Types ({{ all_mobs_count }})
@@ -136,7 +307,7 @@ GLOBAL_LOG_TEMPLATE = '''
         {% for mob in mobs %}
         <div class="mob-item {% if mob.count == 0 %}undiscovered{% endif %}">
             <a href="/mob/{{ mob.mob_id }}">
-                <img src="/mob_images/{{ mob.mob_id }}.png" alt="" onerror="this.src='/mob/{{ mob.mob_id }}.png'">
+                <img src="/mob_images/{{ mob.mob_id }}.png" alt="" onerror="if(this.src.indexOf('/mob_images/')>-1)this.src='/mob/{{ mob.mob_id }}.png';else this.style.display='none';">
                 <div class="mob-name">{{ mob.mob_name }}</div>
                 <div class="mob-count">
                     {% if mob.count > 0 %}
@@ -148,6 +319,7 @@ GLOBAL_LOG_TEMPLATE = '''
             </a>
         </div>
         {% endfor %}
+    </div>
     </div>
 </body>
 </html>
@@ -229,7 +401,7 @@ DETAIL_TEMPLATE = '''
 <body>
     <div class="mob-detail">
         <div class="mob-header">
-            <img src="/mob_images/{{ mob_id }}.png" alt="{{ mob_name }}" onerror="this.src='/mob/{{ mob_id }}.png'">
+            <img src="/mob_images/{{ mob_id }}.png" alt="{{ mob_name }}" onerror="if(this.src.indexOf('/mob_images/')>-1)this.src='/mob/{{ mob_id }}.png';else this.style.display='none';">
             <div class="mob-info">
                 <h1>{{ mob_name }}</h1>
                 <div class="mob-stats">

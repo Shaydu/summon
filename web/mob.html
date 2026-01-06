@@ -3,16 +3,103 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mob Details</title>
+  <title>Summon - Mob Details</title>
   <style>
-    body{font-family:Arial,Helvetica,sans-serif;padding:18px}
-    img{width:128px;height:128px;border:1px solid #ddd;padding:6px;background:#fff}
-    table{border-collapse:collapse;width:100%}
-    th,td{border:1px solid #eee;padding:8px;text-align:left}
+    :root {
+      --summon-purple: #8B4CB8;
+      --summon-teal: #1BC9C3;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #333;
+    }
+    .site-header {
+      background: var(--summon-purple);
+      color: white;
+      padding: 20px 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .site-header h1 {
+      font-size: 32px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 0;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      color: var(--summon-purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .site-header .tagline {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: 5px;
+    }
+    .content {
+      padding: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    a { 
+      color: var(--summon-purple);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover { text-decoration: underline; }
+    h1 { color: var(--summon-purple); margin-bottom: 20px; }
+    h2 { color: var(--summon-purple); margin: 30px 0 15px 0; }
+    img {
+      width: 128px;
+      height: 128px;
+      border: 2px solid var(--summon-purple);
+      padding: 10px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th {
+      background: var(--summon-purple);
+      color: white;
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+    }
+    td {
+      border: 1px solid #f0f0f0;
+      padding: 10px;
+      text-align: left;
+    }
+    tr:hover { background: #f9f9f9; }
+    td a { color: var(--summon-teal); }
   </style>
 </head>
 <body>
-  <a href="/web/index.html">← Back</a>
+  <div class="site-header">
+    <h1><span class="logo-circle">◈</span>Summon</h1>
+    <div class="tagline">Mob Details</div>
+  </div>
+  <div class="content">
+  <a href="/">← Back to Mob Browser</a>
   <h1 id="title">Loading...</h1>
   <div id="img"></div>
   <h2>Find Log</h2>
@@ -37,12 +124,14 @@
         const tr = document.createElement('tr');
         const gps = (it.gps_lat!==null && it.gps_lon!==null) ? `${it.gps_lat.toFixed(5)}, ${it.gps_lon.toFixed(5)}` : '';
         const mapLink = it.map_url ? `<a href="${it.map_url}" target="_blank">map</a>` : '';
-        tr.innerHTML = `<td>${idx+1}</td><td>${it.summoning_player||''}</td><td>${it.summoned_player||''}</td><td>${it.timestamp_utc||''}</td><td>${gps}</td><td>${mapLink}</td>`;
+        const timestamp = it.timestamp_utc ? new Date(it.timestamp_utc).toLocaleString('en-US', { timeZone: 'America/Denver', weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true, timeZoneName: 'short' }) : '';
+        tr.innerHTML = `<td>${idx+1}</td><td>${it.summoning_player||''}</td><td>${it.summoned_player||''}</td><td>${timestamp}</td><td>${gps}</td><td>${mapLink}</td>`;
         tbl.appendChild(tr);
       });
       sEl.appendChild(tbl);
     }
     load().catch(e=>{document.getElementById('title').innerText='Error';console.error(e)})
   </script>
+  </div>
 </body>
 </html>

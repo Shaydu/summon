@@ -78,7 +78,8 @@ def handle_nfc_event(data: Dict[str, Any]) -> Dict[str, Any]:
     # Get other optional fields
     player = data["player"]
     device_id = data.get("device_id")
-    timestamp = data.get("timestamp", datetime.utcnow().isoformat() + "Z")
+    # Let database handle timestamp if not provided (ensures unique timestamps per scan)
+    timestamp = data.get("timestamp")
     
     # Write token to database if GPS coordinates present
     token_id = None

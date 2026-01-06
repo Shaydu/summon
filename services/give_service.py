@@ -57,7 +57,8 @@ def handle_give(data):
         return {"status": "error", "error": "Failed to send command to Minecraft server."}
     
     # Log the operation to database with GPS coordinates if provided
-    timestamp = data.get("timestamp", datetime.utcnow().isoformat() + "Z")
+    # Let database handle timestamp if not provided (ensures unique timestamps)
+    timestamp = data.get("timestamp")
     device_id = data.get("device_id")
     
     try:

@@ -1,0 +1,62 @@
+nohup: ignoring input
+INFO:     Started server process [2854093]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     10.0.0.194:57030 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57031 - "GET /api/tokens/nearby?lat=40.075865&lon=-105.300810&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57032 - "GET /api/tokens/nearby?lat=40.075866&lon=-105.300808&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57033 - "GET /api/tokens/nearby?lat=40.075866&lon=-105.300808&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57034 - "GET /api/tokens/nearby?lat=40.075865&lon=-105.300806&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57035 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57036 - "GET /api/tokens/nearby?lat=40.075862&lon=-105.300803&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57037 - "GET /api/tokens/nearby?lat=40.075862&lon=-105.300803&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57038 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58909 - "GET /api/tokens/nearby?lat=40.075820&lon=-105.300818&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58910 - "GET /api/tokens/nearby?lat=40.075819&lon=-105.300817&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58911 - "GET /api/tokens/nearby?lat=40.075819&lon=-105.300817&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58912 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.131:53406 - "GET /api/tokens/nearby?lat=40.7580&lon=-105.3009&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51742 - "GET /api/tokens/nearby?lat=40.075858&lon=-105.300839&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51743 - "GET /api/tokens/nearby?lat=40.075860&lon=-105.300842&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51744 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51745 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51746 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51747 - "GET /api/tokens/nearby?lat=40.075829&lon=-105.300832&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51748 - "GET /api/tokens/nearby?lat=40.075829&lon=-105.300831&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51749 - "GET /api/tokens/nearby?lat=40.075829&lon=-105.300831&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51750 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51751 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51752 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51753 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51754 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51755 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51756 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51757 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51758 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51759 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51760 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51761 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51762 - "GET /api/tokens/nearby?lat=40.075799&lon=-105.300783&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51763 - "GET /api/tokens/nearby?lat=40.075799&lon=-105.300783&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51764 - "GET /api/tokens/nearby?lat=40.075800&lon=-105.300783&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51765 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51766 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51767 - "GET /api/tokens/nearby?lat=40.075843&lon=-105.300806&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51768 - "GET /api/tokens/nearby?lat=40.075843&lon=-105.300806&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51769 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51770 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51771 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51772 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.131:56831 - "GET /players HTTP/1.1" 200 OK
+INFO:     10.0.0.131:56847 - "GET /api/tokens/nearby?lat=40.7580&lon=-105.3009&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.131:56831 - "GET /players HTTP/1.1" 200 OK
+INFO:     10.0.0.152:62945 - "GET /players HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51773 - "GET /api/tokens/nearby?lat=40.075791&lon=-105.300791&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51774 - "GET /api/tokens/nearby?lat=40.075790&lon=-105.300789&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51775 - "GET /api/tokens/nearby?lat=40.075790&lon=-105.300788&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51776 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [2854093]
