@@ -1607,3 +1607,5 @@
 2026-01-06 12:59:55,786 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075840, lon=-105.300784
 2026-01-06 13:00:55,816 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': '40.075829', 'gps_lon': '-105.300761', 'gps_alt': 1897.1, 'gps_speed': 0.05556, 'satellites': 12, 'hdop': 0.7, 'timestamp': '2026-01-06T12:00:55Z'}
 2026-01-06 13:00:55,833 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075829, lon=-105.300761
+2026-01-06 13:01:55,871 INFO Received device location request: {'device_id': 'esp32-nfc-scanner-001', 'player': 'WiryHealer4014', 'gps_lat': '40.075843', 'gps_lon': '-105.300790', 'gps_alt': 1891.6, 'gps_speed': 0.07408, 'satellites': 12, 'hdop': 0.61, 'timestamp': '2026-01-06T12:01:55Z'}
+2026-01-06 13:01:55,894 INFO Device location logged: device_id=esp32-nfc-scanner-001, lat=40.075843, lon=-105.300790

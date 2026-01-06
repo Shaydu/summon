@@ -43,3 +43,4 @@ INFO:     10.0.0.194:50567 - "POST /api/device/location HTTP/1.1" 200 OK
 INFO:     10.0.0.194:50568 - "POST /api/device/location HTTP/1.1" 200 OK
 INFO:     10.0.0.194:50569 - "POST /api/device/location HTTP/1.1" 200 OK
 INFO:     10.0.0.194:50570 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:50571 - "POST /api/device/location HTTP/1.1" 200 OK
