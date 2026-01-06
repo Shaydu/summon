@@ -1,7 +1,7 @@
 from fastapi import HTTPException
 from typing import Dict, Any
 import uuid
-from summon_db import insert_summon
+from summon_db import insert_summon, insert_token
 from utils.mc_send import send_command_to_minecraft
 
 # summon_service.py
@@ -111,7 +111,7 @@ def handle_sync_batch(data: Any) -> Dict[str, Any]:
 REQUIRED_FIELDS = [
     "token_id", "server_ip", "server_port", "summoned_object_type",
     "summoning_player", "summoned_player", "action_type", "minecraft_id",
-    "entity_summoned", "timestamp", "client_device_id"
+    "entity_summoned", "timestamp", "client_device_id", "gps_lat", "gps_lon"
 ]
 
 def handle_summon(data: Dict[str, Any]) -> Dict[str, Any]:
@@ -119,8 +119,27 @@ def handle_summon(data: Dict[str, Any]) -> Dict[str, Any]:
     missing = [f for f in REQUIRED_FIELDS if f not in data or data[f] in (None, "")]
     if missing:
         raise HTTPException(status_code=400, detail=f"Missing required fields: {', '.join(missing)}")
+    
+    # Validate GPS coordinates are within valid ranges
+    gps_lat = data.get("gps_lat")
+    gps_lon = data.get("gps_lon")
+    
+    if gps_lat is None or gps_lon is None:
+        raise HTTPException(status_code=400, detail="Missing required fields: gps_lat, gps_lon")
+    
+    try:
+        gps_lat = float(gps_lat)
+        gps_lon = float(gps_lon)
+    except (ValueError, TypeError):
+        raise HTTPException(status_code=400, detail="Invalid GPS coordinates: gps_lat and gps_lon must be valid numbers")
+    
+    if gps_lat < -90 or gps_lat > 90:
+        raise HTTPException(status_code=400, detail="Invalid gps_lat: must be between -90 and 90")
+    
+    if gps_lon < -180 or gps_lon > 180:
+        raise HTTPException(status_code=400, detail="Invalid gps_lon: must be between -180 and 180")
 
-    # Store summon request in DB
+    # Store summon request in DB with GPS coordinates
     insert_summon(
         data["server_ip"],
         data["server_port"],
@@ -128,9 +147,27 @@ def handle_summon(data: Dict[str, Any]) -> Dict[str, Any]:
         data["summoning_player"],
         data["summoned_player"],
         data["timestamp"],
-        data.get("gps_lat"),
-        data.get("gps_lon")
+        gps_lat,
+        gps_lon
     )
+    
+    # Create token for nearby discovery - GPS coordinates are now required
+    entity = data.get("entity_summoned") or data.get("minecraft_id") or data.get("summoned_object_type")
+    try:
+        token_id = insert_token(
+            action_type="summon_entity",
+            entity=entity,
+            gps_lat=gps_lat,
+            gps_lon=gps_lon,
+            written_by=data["summoning_player"],
+            device_id=data.get("device_id"),
+            nfc_tag_uid=data.get("nfc_tag_uid"),
+            written_at=data["timestamp"]
+        )
+    except Exception as e:
+        # Since GPS is required, token write failure should fail the request
+        print(f"ERROR: Failed to create discovery token: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to store token: {str(e)}")
 
     # Build summon command using the target player and the entity type fields.
     # Prefer `entity_summoned`, then `minecraft_id`, then `summoned_object_type` as fallbacks.
@@ -143,8 +180,13 @@ def handle_summon(data: Dict[str, Any]) -> Dict[str, Any]:
     response = {
         "status": "ok",
         "executed": cmd,
-        "operation_id": operation_id
+        "operation_id": operation_id,
+        "sent": bool(sent),
+        "token_id": token_id,
+        "token_written": True,
+        "gps": {
+            "lat": gps_lat,
+            "lon": gps_lon
+        }
     }
-    # Include whether we successfully sent the command to the server console.
-    response["sent"] = bool(sent)
     return response

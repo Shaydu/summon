@@ -1,5 +1,5 @@
 from utils.mc_send import send_command_to_minecraft
-from summon_db import insert_give_operation
+from summon_db import insert_give_operation, insert_token
 from datetime import datetime
 
 def handle_give(data):
@@ -70,6 +70,18 @@ def handle_give(data):
             gps_lon=gps_lon,
             device_id=device_id
         )
+        
+        # Create token for nearby discovery if GPS coordinates are present
+        if gps_lat is not None and gps_lon is not None:
+            insert_token(
+                action_type="give_item",
+                item=item,
+                gps_lat=gps_lat,
+                gps_lon=gps_lon,
+                written_by=player,
+                device_id=device_id,
+                written_at=timestamp
+            )
     except Exception as e:
         # Log error but don't fail the operation since command was already sent
         print(f"Warning: Failed to log give operation to database: {e}")

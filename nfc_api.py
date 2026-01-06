@@ -1,6 +1,6 @@
 
 
-# --- Modular FastAPI app (v3.4) ---
+# --- Modular FastAPI app (v3.6) ---
 from fastapi import FastAPI, HTTPException, Header, Request
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -13,9 +13,14 @@ from services.give_service import handle_give
 from services.say_service import handle_say
 from services.time_service import handle_time
 from services.device_location_service import handle_device_location
+from services import token_service
 
 
 app = FastAPI(title="NFC → Minecraft API v3.6")
+
+# Include token service router (new in v3.6.1)
+app.include_router(token_service.router)
+
 # Serve resized mob images and web UI
 app.mount("/mob_images", StaticFiles(directory="web/mob_images"), name="mob_images")
 app.mount("/web", StaticFiles(directory="web"), name="web")
@@ -165,8 +170,18 @@ def players_endpoint(x_api_key: str = Header(...)):
     require_api_key(x_api_key)
     return {"players": get_players_service()}
 
+# NFC Token v1.1.1 versioned endpoint
+@app.post("/api/v1.1.1/nfc-event")
+async def nfc_event_v1_1_1_endpoint(request: Request, x_api_key: str = Header(...)):
+    """NFC Token v1.1.1 format with GPS coordinates support."""
+    require_api_key(x_api_key)
+    data = await request.json()
+    return handle_nfc_event_service(data)
+
+# Legacy endpoint (alias to v1.1.1)
 @app.post("/nfc-event")
 async def nfc_event_endpoint(request: Request, x_api_key: str = Header(...)):
+    """Legacy NFC event endpoint (uses v1.1.1 format)."""
     require_api_key(x_api_key)
     data = await request.json()
     return handle_nfc_event_service(data)

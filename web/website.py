@@ -1,10 +1,12 @@
-from flask import Flask, render_template_string, abort, send_from_directory
+from flask import Flask, render_template_string, abort, send_from_directory, jsonify
 import ssl
 from mob_data import mob_metadata
 import os
 import sys
+import json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import summon_db
+from tokens_template import TOKENS_MAP_TEMPLATE
 
 app = Flask(__name__, static_folder='mob_images', static_url_path='/mob_images')
 
@@ -57,9 +59,27 @@ GLOBAL_LOG_TEMPLATE = '''
 <!DOCTYPE html>
 <html>
 <head>
-    <title>All Mob Discoveries</title>
+    <title>Mob Browser</title>
     <style>
         body { font-family: Arial; padding: 20px; }
+        .header { margin-bottom: 20px; }
+        .toggle-container { margin: 20px 0; }
+        .toggle-btn { 
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: 2px solid #ddd;
+            background: #f9f9f9;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .toggle-btn.active { 
+            background: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+        .toggle-btn:hover { background: #e9e9e9; }
+        .toggle-btn.active:hover { background: #45a049; }
         .mob-list { display: flex; flex-wrap: wrap; gap: 15px; }
         .mob-item { 
             width: 150px; 
@@ -87,19 +107,44 @@ GLOBAL_LOG_TEMPLATE = '''
             color: #666;
             margin-top: 5px;
         }
+        .undiscovered {
+            opacity: 0.5;
+        }
         a { text-decoration: none; color: inherit; }
     </style>
 </head>
 <body>
-    <h1>All Discovered Mobs</h1>
-    <p>{{ total_count }} total summons across {{ mobs|length }} different mob types</p>
+    <div class="header">
+        <h1>Minecraft Mobs</h1>
+        <div class="toggle-container">
+            <button class="toggle-btn {% if not show_discovered_only %}active{% endif %}" onclick="window.location.href='/'">
+                All Types ({{ all_mobs_count }})
+            </button>
+            <button class="toggle-btn {% if show_discovered_only %}active{% endif %}" onclick="window.location.href='/?discovered_only=true'">
+                Discovered Only ({{ discovered_count }})
+            </button>
+        </div>
+        <p>
+            {% if show_discovered_only %}
+                Showing {{ mobs|length }} discovered mob types ({{ total_count }} total summons)
+            {% else %}
+                Showing all {{ all_mobs_count }} mob types with find counts — {{ discovered_count }} discovered ({{ total_count }} summons), {{ all_mobs_count - discovered_count }} undiscovered
+            {% endif %}
+        </p>
+    </div>
     <div class="mob-list">
         {% for mob in mobs %}
-        <div class="mob-item">
+        <div class="mob-item {% if mob.count == 0 %}undiscovered{% endif %}">
             <a href="/mob/{{ mob.mob_id }}">
                 <img src="/mob_images/{{ mob.mob_id }}.png" alt="" onerror="this.src='/mob/{{ mob.mob_id }}.png'">
-                <div class="mob-name">{{ mob.mob_id }}</div>
-                <div class="mob-count">{{ mob.count }} summon{{ 's' if mob.count != 1 else '' }}</div>
+                <div class="mob-name">{{ mob.mob_name }}</div>
+                <div class="mob-count">
+                    {% if mob.count > 0 %}
+                        {{ mob.count }} summon{{ 's' if mob.count != 1 else '' }}
+                    {% else %}
+                        Not discovered
+                    {% endif %}
+                </div>
             </a>
         </div>
         {% endfor %}
@@ -238,37 +283,58 @@ DETAIL_TEMPLATE = '''
 '''
 
 
-# Home page redirects to the global log
+# Home page - show all mobs with counts
 @app.route('/')
 def home():
-    # Get all unique mob types from database with counts
+    from flask import request
+    # Default to showing all types, filter to discovered only if specified
+    show_discovered_only = request.args.get('discovered_only', '').lower() == 'true'
+    
+    # Get summon counts for discovered mobs
     all_summons = summon_db.get_all_summons()
     mob_counts = {}
     for summon in all_summons:
         mob_id = summon.get('summoned_object_type', 'unknown')
         mob_counts[mob_id] = mob_counts.get(mob_id, 0) + 1
     
-    # Convert to list for template
-    mobs = [{'mob_id': mob_id, 'count': count} for mob_id, count in sorted(mob_counts.items())]
+    discovered_count = len(mob_counts)
     total_count = sum(mob_counts.values())
     
-    return render_template_string(GLOBAL_LOG_TEMPLATE, mobs=mobs, total_count=total_count)
+    # Get all mobs from database
+    all_db_mobs = summon_db.get_all_mobs()
+    mobs = []
+    for mob in all_db_mobs:
+        minecraft_id = mob.get('minecraft_id', '')
+        mob_name = mob.get('name', minecraft_id.replace('_', ' ').title())
+        count = mob_counts.get(minecraft_id, 0)
+        
+        # Skip undiscovered mobs if filtering to discovered only
+        if show_discovered_only and count == 0:
+            continue
+            
+        mobs.append({
+            'mob_id': minecraft_id,
+            'mob_name': mob_name,
+            'count': count
+        })
+    
+    # Sort by count (highest first), then alphabetically by name
+    mobs.sort(key=lambda x: (-x['count'], x['mob_name']))
+    
+    all_mobs_count = len(all_db_mobs)
+    
+    return render_template_string(GLOBAL_LOG_TEMPLATE, 
+                                 mobs=mobs, 
+                                 total_count=total_count,
+                                 discovered_count=discovered_count,
+                                 all_mobs_count=all_mobs_count,
+                                 show_discovered_only=show_discovered_only)
 
-# Global log page (all mobs)
+# Global log page - redirects to home
 @app.route('/log')
 def global_log():
-    # Get all unique mob types from database with counts
-    all_summons = summon_db.get_all_summons()
-    mob_counts = {}
-    for summon in all_summons:
-        mob_id = summon.get('summoned_object_type', 'unknown')
-        mob_counts[mob_id] = mob_counts.get(mob_id, 0) + 1
-    
-    # Convert to list for template
-    mobs = [{'mob_id': mob_id, 'count': count} for mob_id, count in sorted(mob_counts.items())]
-    total_count = sum(mob_counts.values())
-    
-    return render_template_string(GLOBAL_LOG_TEMPLATE, mobs=mobs, total_count=total_count)
+    from flask import redirect
+    return redirect('/')
 
 @app.route('/mob/<mob_id>')
 def mob_detail(mob_id):
@@ -326,7 +392,135 @@ def mob_detail(mob_id):
 def serve_mob_image(filename):
     """Serve mob images from the mob/ directory as fallback"""
     mob_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'mob'))
-    return send_from_directory(mob_dir, filename)
+@app.route('/tokens')
+def tokens_map():
+    """Display all tokens on an interactive map"""
+    try:
+        # Get all tokens from database with GPS coordinates
+        all_tokens = summon_db.get_all_tokens(limit=1000)
+        
+        # Filter tokens with GPS coordinates
+        tokens_with_gps = [
+            t for t in all_tokens 
+            if t.get('gps_write_lat') is not None and t.get('gps_write_lon') is not None
+        ]
+        
+        # Calculate statistics
+        total_tokens = len(tokens_with_gps)
+        summon_count = sum(1 for t in tokens_with_gps if t.get('action_type') == 'summon_entity')
+        give_count = sum(1 for t in tokens_with_gps if t.get('action_type') == 'give_item')
+        time_count = sum(1 for t in tokens_with_gps if t.get('action_type') == 'set_time')
+        
+        # Calculate center point (average of all positions)
+        if total_tokens > 0:
+            center_lat = sum(t['gps_write_lat'] for t in tokens_with_gps) / total_tokens
+            center_lon = sum(t['gps_write_lon'] for t in tokens_with_gps) / total_tokens
+        else:
+            center_lat = 40.7580  # Default to Fort Collins
+            center_lon = -105.3009
+        
+        # Prepare token data for JavaScript (get mob/item metadata)
+        token_data = []
+        for token in tokens_with_gps:
+            token_info = {
+                'token_id': str(token['token_id']),
+                'action_type': token['action_type'],
+                'lat': float(token['gps_write_lat']),
+                'lon': float(token['gps_write_lon']),
+                'written_by': token.get('written_by'),
+                'written_at': token.get('written_at').isoformat() if token.get('written_at') else None,
+                'entity': token.get('entity'),
+                'item': token.get('item'),
+            }
+            
+            # Get metadata from mobs or items tables
+            if token['action_type'] == 'summon_entity' and token.get('entity'):
+                mobs = summon_db.get_all_mobs()
+                mob = next((m for m in mobs if m.get('minecraft_id') == token['entity']), None)
+                if mob:
+                    token_info['name'] = mob.get('name', token['entity'])
+                    token_info['rarity'] = mob.get('rarity')
+                    token_info['mob_type'] = mob.get('mob_type')
+                    token_info['image_url'] = mob.get('image_url')
+            
+            elif token['action_type'] == 'give_item' and token.get('item'):
+                items = summon_db.get_all_items()
+                item = next((i for i in items if i.get('minecraft_id') == token['item']), None)
+                if item:
+                    token_info['name'] = item.get('name', token['item'])
+                    token_info['rarity'] = item.get('rarity')
+                    token_info['image_url'] = item.get('image_url')
+            
+            token_data.append(token_info)
+        
+        return render_template_string(
+            TOKENS_MAP_TEMPLATE,
+            tokens_json=json.dumps(token_data),
+            total_tokens=total_tokens,
+            summon_count=summon_count,
+            give_count=give_count,
+            time_count=time_count,
+            center_lat=center_lat,
+            center_lon=center_lon
+        )
+    
+    except Exception as e:
+        return f"Error loading token map: {str(e)}", 500
+
+@app.route('/api/tokens-data')
+def tokens_data():
+    """API endpoint for fetching token data (for auto-refresh)"""
+    try:
+        # Get all tokens with GPS coordinates
+        all_tokens = summon_db.get_all_tokens(limit=1000)
+        tokens_with_gps = [
+            t for t in all_tokens 
+            if t.get('gps_write_lat') is not None and t.get('gps_write_lon') is not None
+        ]
+        
+        # Prepare token data with metadata
+        token_data = []
+        for token in tokens_with_gps:
+            token_info = {
+                'token_id': str(token['token_id']),
+                'action_type': token['action_type'],
+                'lat': float(token['gps_write_lat']),
+                'lon': float(token['gps_write_lon']),
+                'written_by': token.get('written_by'),
+                'written_at': token.get('written_at').isoformat() if token.get('written_at') else None,
+                'entity': token.get('entity'),
+                'item': token.get('item'),
+            }
+            
+            # Get metadata
+            if token['action_type'] == 'summon_entity' and token.get('entity'):
+                mobs = summon_db.get_all_mobs()
+                mob = next((m for m in mobs if m.get('minecraft_id') == token['entity']), None)
+                if mob:
+                    token_info['name'] = mob.get('name', token['entity'])
+                    token_info['rarity'] = mob.get('rarity')
+                    token_info['mob_type'] = mob.get('mob_type')
+                    token_info['image_url'] = mob.get('image_url')
+            
+            elif token['action_type'] == 'give_item' and token.get('item'):
+                items = summon_db.get_all_items()
+                item = next((i for i in items if i.get('minecraft_id') == token['item']), None)
+                if item:
+                    token_info['name'] = item.get('name', token['item'])
+                    token_info['rarity'] = item.get('rarity')
+                    token_info['image_url'] = item.get('image_url')
+            
+            token_data.append(token_info)
+        
+        return jsonify({'tokens': token_data})
+    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+if __name__ == '__main__':
+    context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+    context.load_cert_chain('web/server.crt', 'web/server.key')
+    app.run(host='0.0.0.0', port=8080, ssl_context=context)
 
 if __name__ == '__main__':
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
