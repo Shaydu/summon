@@ -560,10 +560,14 @@ def mob_detail(mob_id):
                                  all_entries=all_entries,
                                  entries_by_action=entries_by_action)
 
-@app.route('/mob/<filename>')
+@app.route('/mob_fallback/<filename>')
 def serve_mob_image(filename):
     """Serve mob images from the mob/ directory as fallback"""
     mob_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'mob'))
+    if os.path.exists(os.path.join(mob_dir, filename)):
+        return send_from_directory(mob_dir, filename)
+    abort(404)
+
 @app.route('/tokens')
 def tokens_map():
     """Display all tokens on an interactive map"""
@@ -688,11 +692,6 @@ def tokens_data():
     
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
-if __name__ == '__main__':
-    context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-    context.load_cert_chain('web/server.crt', 'web/server.key')
-    app.run(host='0.0.0.0', port=8080, ssl_context=context)
 
 if __name__ == '__main__':
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)

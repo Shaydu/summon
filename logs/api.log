@@ -1,46 +1,20 @@
-INFO:     Started server process [1318354]
+INFO:     Started server process [1882007]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     10.0.0.194:50532 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50533 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50534 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50535 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50536 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50537 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50538 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50539 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50540 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50541 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50542 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50543 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50544 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50545 - "POST /api/device/location HTTP/1.1" 200 OK
-[TOKEN_SERVICE] Registered token c4cbcddd-a5af-4bc6-acc1-abeb489bd7fd: action=blaze, type=summon_entity, entity=blaze, item=None
-INFO:     10.0.0.152:54315 - "POST /api/tokens/register HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50546 - "POST /time HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50547 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50548 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50549 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50550 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50551 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50552 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50553 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50554 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50555 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50556 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50557 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50558 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50559 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50560 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50561 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50562 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50563 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50564 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50565 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50566 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50567 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50568 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50569 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50570 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:50571 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:64021 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57607 - "POST /time HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57608 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57609 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57610 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57611 - "POST /time HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57612 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57613 - "POST /time HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57614 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57615 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57616 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57617 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:64949 - "POST /time HTTP/1.1" 200 OK
+INFO:     10.0.0.194:64950 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:64951 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:64952 - "POST /api/device/location HTTP/1.1" 200 OK

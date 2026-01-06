@@ -68,28 +68,57 @@ summon.sh - Manage Summon API and Minecraft Bedrock Server
 Usage: ./summon.sh <command>
 
 Commands:
+    init-db           Initialize PostgreSQL database (first-time setup)
     start             Start the Summon API (with venv, tails API log)
     stop              Stop the Summon API
     restart           Restart the Summon API
     status            Show status of the Summon API
+    start-web         Start the web server (Flask, port 8080)
+    stop-web          Stop the web server
+    restart-web       Restart the web server
+    status-web        Show status of the web server
     start-minecraft   Start Minecraft server in a named screen session
     stop-minecraft    Stop the Minecraft server (screen session)
     restart-minecraft Restart the Minecraft server
     status-minecraft  Show status of the Minecraft server
-    start-all         Start both Minecraft and Summon API
-    restart-all       Restart both Minecraft and Summon API
-    status-all        Show status for both servers and log locations
+    start-all         Start Minecraft, API, and web server
+    restart-all       Restart Minecraft, API, and web server
+    stop-all          Stop all services
+    status-all        Show status for all services and log locations
     help              Show this help message
 
 Notes:
     - To connect to the Minecraft console: screen -r minecraft_server
     - To list screen sessions: screen -ls
     - API log: logs/api.log
+    - Web log: logs/web.log
     - Minecraft log: ../bedrock-server-1.21.131.1/bedrock_server.log
 EOF
 }
 
+init_db() {
+    echo "Checking PostgreSQL database setup..."
+    
+    # Check if PostgreSQL is running
+    if ! sudo systemctl is-active --quiet postgresql; then
+        echo "PostgreSQL is not running. Starting..."
+        sudo systemctl start postgresql
+    fi
+    
+    # Check if database exists
+    if sudo -u postgres psql -lqt | cut -d \| -f 1 | grep -qw summon_db; then
+        echo "Database 'summon_db' already exists. Skipping initialization."
+    else
+        echo "Initializing PostgreSQL database..."
+        ./init_postgres.sh
+        echo "Database initialized successfully!"
+    fi
+}
+
 start() {
+    # Check and initialize database if needed
+    init_db
+    
     if [ -f "$PIDFILE" ]; then
         if kill -0 $(cat "$PIDFILE") 2>/dev/null; then
             echo "Summon API is already running (PID $(cat $PIDFILE))"
@@ -218,11 +247,20 @@ start() {
             echo "venv already active: $VIRTUAL_ENV"
         fi
         start
+        sleep 2
+        start_web
+    }
+
+    stop_all() {
+        stop
+        stop_web
+        stop_minecraft
     }
 
     restart_all() {
         screen -wipe > /dev/null 2>&1
         stop
+        stop_web
         stop_minecraft
         sleep 2
         start_minecraft
@@ -235,6 +273,8 @@ start() {
             echo "venv already active: $VIRTUAL_ENV"
         fi
         start
+        sleep 2
+        start_web
     }
 
     status_all() {
@@ -242,12 +282,19 @@ start() {
         status
         echo "API log: $LOGFILE"
         echo
+        echo "--- Web Server Status ---"
+        status_web
+        echo "Web log: $WEB_LOGFILE"
+        echo
         echo "--- Minecraft Server Status ---"
         status_minecraft
         echo "Minecraft log: $MINECRAFT_DIR/bedrock_server.log"
     }
 
     case "$1" in
+        init-db)
+            init_db
+            ;;
         start)
             start
             ;;
@@ -259,18 +306,6 @@ start() {
             ;;
         status)
             status
-            ;;
-        start-minecraft)
-            start_minecraft
-            ;;
-        stop-minecraft)
-            stop_minecraft
-            ;;
-        restart-minecraft)
-            restart_minecraft
-            ;;
-        status-minecraft)
-            status_minecraft
             ;;
         start-web)
             start_web
@@ -284,47 +319,29 @@ start() {
         status-web)
             status_web
             ;;
-        start-all)
+        start-minecraft)
             start_minecraft
-            sleep 2
-            if [ -z "$VIRTUAL_ENV" ]; then
-                echo "Activating venv..."
-                source "$VENVDIR/bin/activate"
-            else
-                echo "venv already active: $VIRTUAL_ENV"
-            fi
-            start
-            start_web
+            ;;
+        stop-minecraft)
+            stop_minecraft
+            ;;
+        restart-minecraft)
+            restart_minecraft
+            ;;
+        status-minecraft)
+            status_minecraft
+            ;;
+        start-all)
+            start_all
+            ;;
+        stop-all)
+            stop_all
             ;;
         restart-all)
-            screen -wipe > /dev/null 2>&1
-            stop
-            stop_minecraft
-            stop_web
-            sleep 2
-            start_minecraft
-            sleep 2
-            if [ -z "$VIRTUAL_ENV" ]; then
-                echo "Activating venv..."
-                source "$VENVDIR/bin/activate"
-            else
-                echo "venv already active: $VIRTUAL_ENV"
-            fi
-            start
-            start_web
+            restart_all
             ;;
         status-all)
-            echo "--- Summon API v3 Status ---"
-            status
-            echo "API log: $LOGFILE"
-            echo
-            echo "--- Web Server Status ---"
-            status_web
-            echo "Web log: $WEB_LOGFILE"
-            echo
-            echo "--- Minecraft Server Status ---"
-            status_minecraft
-            echo "Minecraft log: $MINECRAFT_DIR/bedrock_server.log"
+            status_all
             ;;
         help)
             help
