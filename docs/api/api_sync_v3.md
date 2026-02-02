@@ -206,7 +206,7 @@ This document defines the production-ready API and sync contract for the Minecra
     {
       "token_id": "ghi789",
       "field": "summon_type",
-      "message": "summon_type must be one of: zombie, skeleton, creeper"
+      "message": "summon_type must be one of: zombie, skeleton, creeper, myname:dewb"
     }
   ]
 }

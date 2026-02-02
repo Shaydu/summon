@@ -1,20 +1,50 @@
-INFO:     Started server process [1882007]
+INFO:     Started server process [25054]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     10.0.0.194:64021 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:57607 - "POST /time HTTP/1.1" 200 OK
-INFO:     10.0.0.194:57608 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.194:57609 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:57610 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.194:57611 - "POST /time HTTP/1.1" 200 OK
-INFO:     10.0.0.194:57612 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.194:57613 - "POST /time HTTP/1.1" 200 OK
-INFO:     10.0.0.194:57614 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.194:57615 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:57616 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.194:57617 - "POST /api/device/location HTTP/1.1" 200 OK
-INFO:     10.0.0.194:64949 - "POST /time HTTP/1.1" 200 OK
-INFO:     10.0.0.194:64950 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.194:64951 - "POST /summon HTTP/1.1" 200 OK
-INFO:     10.0.0.194:64952 - "POST /api/device/location HTTP/1.1" 200 OK
+DEBUG: Full data received: {'summoned_player': 'WiryHealer4014', 'server_ip': '10.0.0.227', 'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'timestamp': '2026-02-02T02:46:00Z', 'summoned_object_type': 'dewb', 'entity_summoned': 'dewb', 'gps_lon': -105.30080418796976, 'gps_lat': 40.075783685335914, 'minecraft_id': 'dewb', 'server_port': 8000, 'action_type': 'Read', 'summoning_player': 'WiryHealer4014', 'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2'}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:59931 - "POST /summon HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56042 - "GET /api/tokens/nearby?lat=40.758&lon=-105.3009&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56052 - "GET /api/tokens/nearby?lat=40.758&lon=-105.3009&action_type=summon_entity&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56058 - "GET /api/tokens/nearby?lat=40.758&lon=-105.3009&action_type=give_item&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56062 - "GET /api/tokens/nearby?lat=40.758&lon=-105.3009&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56078 - "GET /api/tokens/nearby?lat=40.758&lon=-105.3009&radius_km=0.1&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56086 - "GET /api/tokens/nearby?lat=40.758&lon=-105.3009&limit=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56090 - "GET /api/tokens/nearby?lat=40.758&lon=-105.3009&action_type=summon_entity&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56094 - "GET /api/tokens/nearby?lat=40.758&lon=-105.3009&action_type=give_item&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56096 - "GET /api/tokens/nearby?lat=100.0&lon=-105.3009 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:56098 - "GET /api/tokens/nearby?lat=40.758&lon=-200.0 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:56106 - "GET /api/tokens/nearby?lat=40.758&lon=-105.3009&radius_km=0.05 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:56114 - "GET /api/tokens/nearby?lat=40.758&lon=-105.3009&radius_km=100.0 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:56128 - "GET /api/tokens/nearby?lat=40.758&lon=-105.3009&limit=0 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:56140 - "GET /api/tokens/nearby?lat=40.758&lon=-105.3009&limit=100 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:56148 - "GET /api/tokens/nearby?lat=40.758&lon=-105.3009 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:56150 - "GET /api/tokens/nearby?lat=40.758&lon=-105.3009 HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:56152 - "GET /api/tokens/nearby?lat=40.758&lon=-105.3009&limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56160 - "GET /api/tokens?limit=100 HTTP/1.1" 200 OK
+DEBUG: Full data received: {'minecraft_id': 'dewb', 'action_type': 'Read', 'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'server_port': 8000, 'entity_summoned': 'dewb', 'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'timestamp': '2026-02-02T02:46:00Z', 'gps_lon': -105.3007302686837, 'gps_lat': 40.07588148426873, 'summoned_player': 'WiryHealer4014', 'server_ip': '10.0.0.227', 'summoned_object_type': 'dewb', 'summoning_player': 'WiryHealer4014'}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:59932 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'server_ip': '10.0.0.227', 'timestamp': '2026-02-02T02:46:00Z', 'summoned_object_type': 'dewb', 'entity_summoned': 'dewb', 'gps_lon': -105.30077824966448, 'gps_lat': 40.07581315430719, 'minecraft_id': 'dewb', 'server_port': 8000, 'action_type': 'Read', 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014'}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:59933 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:59933 - "POST /time HTTP/1.1" 200 OK
+INFO:     10.0.0.152:59933 - "POST /time HTTP/1.1" 200 OK
+INFO:     10.0.0.152:59933 - "POST /say HTTP/1.1" 200 OK
+INFO:     10.0.0.152:59934 - "POST /api/v1.1.1/nfc-event HTTP/1.1" 200 OK
+DEBUG: Full data received: {'action_type': 'Read', 'summoning_player': 'WiryHealer4014', 'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'timestamp': '2026-02-02T02:46:00Z', 'summoned_player': 'WiryHealer4014', 'entity_summoned': 'dewb', 'server_port': 8000, 'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'server_ip': '10.0.0.227', 'gps_lon': -105.30081255031563, 'summoned_object_type': 'dewb', 'minecraft_id': 'dewb', 'gps_lat': 40.07586799966015}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:59935 - "POST /summon HTTP/1.1" 200 OK

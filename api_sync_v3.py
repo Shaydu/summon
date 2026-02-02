@@ -26,7 +26,7 @@ app = Flask(__name__)
 DB = []
 DB_LOCK = Lock()
 
-ALLOWED_SUMMON_TYPES = {"zombie", "skeleton", "creeper"}
+ALLOWED_SUMMON_TYPES = {"zombie", "skeleton", "creeper", "myname:dewb"}
 
 # --- Validation Helpers ---
 def is_iso8601(s: str) -> bool:

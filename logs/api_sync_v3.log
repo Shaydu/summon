@@ -1,0 +1,48 @@
+2026-02-01 18:52:36,689 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-02-01 18:52:36,689 INFO [33mPress CTRL+C to quit[0m
+2026-02-01 18:52:36,692 INFO  * Restarting with stat
+2026-02-01 18:52:36,807 WARNING  * Debugger is active!
+2026-02-01 18:52:36,812 INFO  * Debugger PIN: 368-228-078
+2026-02-01 18:53:02,200 INFO 127.0.0.1 - - [01/Feb/2026 18:53:02] "[31m[1mGET /api/summon/sync HTTP/1.1[0m" 405 -
+2026-02-01 18:53:36,903 INFO 127.0.0.1 - - [01/Feb/2026 18:53:36] "[33mGET /summon HTTP/1.1[0m" 404 -
+2026-02-01 18:57:49,755 INFO /api/summon/sync request: {'token_id': 'test', 'player_id': 'test', 'summon_type': 'test', 'summon_time': '2025-12-22T15:00:00Z', 'location': {'x': 0, 'y': 0, 'z': 0}}
+2026-02-01 18:57:49,755 WARNING /api/summon/sync validation error: [{'field': 'summon_type', 'message': 'summon_type must be one of: skeleton, zombie, creeper'}]
+2026-02-01 18:57:49,755 INFO 127.0.0.1 - - [01/Feb/2026 18:57:49] "[31m[1mPOST /api/summon/sync HTTP/1.1[0m" 400 -
+2026-02-01 20:04:45,246 INFO  * Detected change in '/home/doo/minecraft-bedrock-server/summon/utils/mc_send.py', reloading
+2026-02-01 20:04:45,276 INFO  * Restarting with stat
+2026-02-01 20:04:45,407 WARNING  * Debugger is active!
+2026-02-01 20:04:45,408 INFO  * Debugger PIN: 368-228-078
+2026-02-01 20:04:55,467 INFO  * Detected change in '/home/doo/minecraft-bedrock-server/summon/utils/mc_send.py', reloading
+2026-02-01 20:04:55,517 INFO  * Restarting with stat
+2026-02-01 20:04:55,663 WARNING  * Debugger is active!
+2026-02-01 20:04:55,664 INFO  * Debugger PIN: 368-228-078
+2026-02-01 20:16:30,570 INFO  * Detected change in '/home/doo/minecraft-bedrock-server/summon/api_sync_v3.py', reloading
+2026-02-01 20:16:30,621 INFO  * Restarting with stat
+2026-02-01 20:16:30,747 WARNING  * Debugger is active!
+2026-02-01 20:16:30,748 INFO  * Debugger PIN: 368-228-078
+2026-02-01 20:16:55,139 INFO /api/summon/sync request: {'token_id': 'test-mychar-dweb', 'player_id': 'TestPlayer', 'summon_type': 'mychar:dweb', 'summon_time': '2026-02-02T02:40:00Z', 'location': {'x': 100, 'y': 64, 'z': -200}}
+2026-02-01 20:16:55,139 INFO /api/summon/sync success: test-mychar-dweb
+2026-02-01 20:16:55,139 INFO 127.0.0.1 - - [01/Feb/2026 20:16:55] "POST /api/summon/sync HTTP/1.1" 200 -
+2026-02-01 20:17:30,707 INFO /api/summon/sync request: {'token_id': 'test-dewb', 'player_id': 'WiryHealer4014', 'summon_type': 'mychar:dewb', 'summon_time': '2026-02-02T02:40:00Z', 'location': {'x': 100, 'y': 64, 'z': -200}}
+2026-02-01 20:17:30,707 WARNING /api/summon/sync validation error: [{'field': 'summon_type', 'message': 'summon_type must be one of: skeleton, zombie, creeper, mychar:dweb'}]
+2026-02-01 20:17:30,708 INFO 127.0.0.1 - - [01/Feb/2026 20:17:30] "[31m[1mPOST /api/summon/sync HTTP/1.1[0m" 400 -
+2026-02-01 20:18:57,870 INFO  * Detected change in '/home/doo/minecraft-bedrock-server/summon/api_sync_v3.py', reloading
+2026-02-01 20:18:57,900 INFO  * Restarting with stat
+2026-02-01 20:18:58,031 WARNING  * Debugger is active!
+2026-02-01 20:18:58,033 INFO  * Debugger PIN: 368-228-078
+2026-02-01 20:19:19,270 INFO /api/summon/sync request: {'token_id': 'test-myname-dewb', 'player_id': 'WiryHealer4014', 'summon_type': 'myname:dewb', 'summon_time': '2026-02-02T02:45:00Z', 'location': {'x': 100, 'y': 64, 'z': -200}}
+2026-02-01 20:19:19,270 INFO /api/summon/sync success: test-myname-dewb
+2026-02-01 20:19:19,271 INFO 127.0.0.1 - - [01/Feb/2026 20:19:19] "POST /api/summon/sync HTTP/1.1" 200 -
+2026-02-01 20:24:41,428 INFO  * Detected change in '/home/doo/minecraft-bedrock-server/summon/services/summon_service.py', reloading
+2026-02-01 20:24:41,480 INFO  * Restarting with stat
+2026-02-01 20:24:41,614 WARNING  * Debugger is active!
+2026-02-01 20:24:41,615 INFO  * Debugger PIN: 368-228-078
+2026-02-01 20:25:35,979 INFO  * Detected change in '/home/doo/minecraft-bedrock-server/summon/services/summon_service.py', reloading
+2026-02-01 20:25:36,028 INFO  * Restarting with stat
+2026-02-01 20:25:36,148 WARNING  * Debugger is active!
+2026-02-01 20:25:36,150 INFO  * Debugger PIN: 368-228-078
+2026-02-01 20:25:51,244 INFO  * Detected change in '/home/doo/minecraft-bedrock-server/summon/services/summon_service.py', reloading
+2026-02-01 20:25:51,273 INFO  * Restarting with stat
+2026-02-01 20:25:51,399 WARNING  * Debugger is active!
+2026-02-01 20:25:51,400 INFO  * Debugger PIN: 368-228-078

@@ -120,6 +120,11 @@ def handle_summon(data: Dict[str, Any]) -> Dict[str, Any]:
     if missing:
         raise HTTPException(status_code=400, detail=f"Missing required fields: {', '.join(missing)}")
     
+    print(f"DEBUG: Full data received: {data}")
+    print(f"DEBUG: entity_summoned = {data.get('entity_summoned')}")
+    print(f"DEBUG: minecraft_id = {data.get('minecraft_id')}")
+    print(f"DEBUG: summoned_object_type = {data.get('summoned_object_type')}")
+    
     # Validate GPS coordinates are within valid ranges
     gps_lat = data.get("gps_lat")
     gps_lon = data.get("gps_lon")
@@ -172,7 +177,9 @@ def handle_summon(data: Dict[str, Any]) -> Dict[str, Any]:
     # Build summon command using the target player and the entity type fields.
     # Prefer `entity_summoned`, then `minecraft_id`, then `summoned_object_type` as fallbacks.
     entity = data.get("entity_summoned") or data.get("minecraft_id") or data.get("summoned_object_type")
+    entity = str(entity).strip()  # Ensure it's a string and remove whitespace
     cmd = f"execute as @a[name={data['summoned_player']}] at @s run summon {entity} ~ ~5 ~4"
+    print(f"DEBUG: Building summon command with entity='{entity}', full command: {cmd}")
     # Try to send the command to the running Minecraft server screen session.
     sent = send_command_to_minecraft(cmd)
 
