@@ -46,3 +46,19 @@
 2026-02-01 20:25:51,273 INFO  * Restarting with stat
 2026-02-01 20:25:51,399 WARNING  * Debugger is active!
 2026-02-01 20:25:51,400 INFO  * Debugger PIN: 368-228-078
+2026-02-02 09:35:25,494 INFO  * Detected change in '/home/doo/minecraft-bedrock-server/summon/scripts/add_mob.py', reloading
+2026-02-02 09:35:25,542 INFO  * Restarting with stat
+2026-02-02 09:35:25,664 WARNING  * Debugger is active!
+2026-02-02 09:35:25,665 INFO  * Debugger PIN: 368-228-078
+2026-02-02 09:43:48,769 INFO  * Detected change in '/home/doo/minecraft-bedrock-server/summon/debounce_config.py', reloading
+2026-02-02 09:43:48,795 INFO  * Restarting with stat
+2026-02-02 09:43:48,923 WARNING  * Debugger is active!
+2026-02-02 09:43:48,925 INFO  * Debugger PIN: 368-228-078
+2026-02-02 09:43:49,933 INFO  * Detected change in '/home/doo/minecraft-bedrock-server/summon/debounce_service.py', reloading
+2026-02-02 09:43:49,953 INFO  * Restarting with stat
+2026-02-02 09:43:50,069 WARNING  * Debugger is active!
+2026-02-02 09:43:50,071 INFO  * Debugger PIN: 368-228-078
+2026-02-02 09:44:09,205 INFO  * Detected change in '/home/doo/minecraft-bedrock-server/summon/services/summon_service.py', reloading
+2026-02-02 09:44:09,255 INFO  * Restarting with stat
+2026-02-02 09:44:09,387 WARNING  * Debugger is active!
+2026-02-02 09:44:09,389 INFO  * Debugger PIN: 368-228-078

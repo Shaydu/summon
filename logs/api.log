@@ -48,3 +48,410 @@ DEBUG: minecraft_id = dewb
 DEBUG: summoned_object_type = dewb
 DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
 INFO:     10.0.0.152:59935 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'summoned_player': 'WiryHealer4014', 'server_ip': '10.0.0.227', 'minecraft_id': 'dewb', 'timestamp': '2026-02-02T02:46:00Z', 'gps_lon': -105.30083271876003, 'summoning_player': 'WiryHealer4014', 'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'action_type': 'Read', 'server_port': 8000, 'gps_lat': 40.07584738693906, 'entity_summoned': 'dewb', 'summoned_object_type': 'dewb'}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:56094 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'summoned_player': 'WiryHealer4014', 'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'server_ip': '10.0.0.227', 'server_port': 8000, 'minecraft_id': 'dewb', 'summoning_player': 'WiryHealer4014', 'action_type': 'Read', 'gps_lat': 40.07584738693906, 'gps_lon': -105.30083271876003, 'timestamp': '2026-02-02T02:46:00Z', 'summoned_object_type': 'dewb', 'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'entity_summoned': 'dewb'}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:56094 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'gps_lat': 40.07584738693906, 'summoned_player': 'WiryHealer4014', 'summoning_player': 'WiryHealer4014', 'server_ip': '10.0.0.227', 'timestamp': '2026-02-02T02:46:00Z', 'summoned_object_type': 'dewb', 'action_type': 'Read', 'entity_summoned': 'dewb', 'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'server_port': 8000, 'minecraft_id': 'dewb', 'gps_lon': -105.30083271876003}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:56095 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'action_type': 'Read', 'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'summoned_object_type': 'dewb', 'summoning_player': 'WiryHealer4014', 'gps_lon': -105.30083466864501, 'minecraft_id': 'dewb', 'server_ip': '10.0.0.227', 'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'gps_lat': 40.07584822829821, 'entity_summoned': 'dewb', 'summoned_player': 'WiryHealer4014', 'server_port': 8000, 'timestamp': '2026-02-02T02:46:00Z'}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:56096 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'minecraft_id': 'dewb', 'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'action_type': 'Read', 'summoned_player': 'WiryHealer4014', 'gps_lat': 40.07586728174824, 'summoning_player': 'WiryHealer4014', 'timestamp': '2026-02-02T02:46:00Z', 'server_port': 8000, 'summoned_object_type': 'dewb', 'server_ip': '10.0.0.227', 'gps_lon': -105.30083710060286, 'entity_summoned': 'dewb'}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:56097 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'minecraft_id': 'dewb', 'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'action_type': 'Read', 'summoned_player': 'WiryHealer4014', 'gps_lat': 40.07586728174824, 'summoning_player': 'WiryHealer4014', 'server_port': 8000, 'summoned_object_type': 'dewb', 'timestamp': '2026-02-02T02:46:00Z', 'server_ip': '10.0.0.227', 'gps_lon': -105.30083710060286, 'entity_summoned': 'dewb'}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:56097 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'server_ip': '10.0.0.227', 'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'timestamp': '2026-02-02T02:46:00Z', 'summoned_object_type': 'dewb', 'gps_lon': -105.30083710060286, 'entity_summoned': 'dewb', 'gps_lat': 40.07586728174824, 'minecraft_id': 'dewb', 'server_port': 8000, 'action_type': 'Read', 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014'}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:56098 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.152:56114 - "POST /api/summon/sync/batch HTTP/1.1" 200 OK
+DEBUG: Full data received: {'timestamp': '2026-02-02T02:46:00Z', 'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'summoned_object_type': 'dewb', 'server_ip': '10.0.0.227', 'summoned_player': 'WiryHealer4014', 'minecraft_id': 'dewb', 'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'summoning_player': 'WiryHealer4014', 'action_type': 'Read', 'entity_summoned': 'dewb', 'gps_lat': 40.07582569334698, 'server_port': 8000, 'gps_lon': -105.30079152773276}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:56205 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'entity_summoned': 'dewb', 'timestamp': '2026-02-02T02:46:00Z', 'gps_lat': 40.07582569334698, 'server_ip': '10.0.0.227', 'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'summoning_player': 'WiryHealer4014', 'action_type': 'Read', 'summoned_player': 'WiryHealer4014', 'minecraft_id': 'dewb', 'summoned_object_type': 'dewb', 'gps_lon': -105.30079152773276, 'server_port': 8000}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:56205 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'entity_summoned': 'dewb', 'summoning_player': 'WiryHealer4014', 'gps_lon': -105.30079152773276, 'summoned_player': 'WiryHealer4014', 'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'action_type': 'Read', 'server_port': 8000, 'server_ip': '10.0.0.227', 'timestamp': '2026-02-02T02:46:00Z', 'gps_lat': 40.07582569334698, 'summoned_object_type': 'dewb', 'minecraft_id': 'dewb'}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:56206 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'gps_lat': 40.075812682938, 'summoned_player': 'WiryHealer4014', 'server_ip': '10.0.0.227', 'summoning_player': 'WiryHealer4014', 'timestamp': '2026-02-02T02:46:00Z', 'summoned_object_type': 'dewb', 'action_type': 'Read', 'entity_summoned': 'dewb', 'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'server_port': 8000, 'minecraft_id': 'dewb', 'gps_lon': -105.30076591212548}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:56207 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'gps_lat': 40.075812682938, 'server_ip': '10.0.0.227', 'summoned_player': 'WiryHealer4014', 'summoning_player': 'WiryHealer4014', 'timestamp': '2026-02-02T02:46:00Z', 'summoned_object_type': 'dewb', 'action_type': 'Read', 'entity_summoned': 'dewb', 'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'server_port': 8000, 'minecraft_id': 'dewb', 'gps_lon': -105.30076591212548}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:56207 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'minecraft_id': 'dewb', 'summoned_object_type': 'dewb', 'token_id': '236A5528-0D0D-41B2-99DB-9F1546779BD2', 'timestamp': '2026-02-02T02:46:00Z', 'summoned_player': 'WiryHealer4014', 'summoning_player': 'WiryHealer4014', 'action_type': 'Read', 'client_device_id': '6829781B-5E10-4C29-B2D3-A2F19BFFE2AA', 'entity_summoned': 'dewb', 'gps_lat': 40.075812682938, 'server_ip': '10.0.0.227', 'server_port': 8000, 'gps_lon': -105.30076591212548}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.152:56208 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:56590 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57725 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57726 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57727 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57728 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57729 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57730 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57731 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57732 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57733 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57734 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57735 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57736 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57737 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57738 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57739 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57740 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57741 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57898 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57899 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57900 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57901 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57902 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57903 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57904 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57905 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57906 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57907 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57908 - "GET /api/tokens/nearby?lat=40.075827&lon=-105.300678&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57909 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57910 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57911 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57912 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57913 - "GET /api/tokens/nearby?lat=40.076074&lon=-105.300388&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57914 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57915 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57916 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57917 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57918 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57919 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57920 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57921 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57922 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57923 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57924 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57925 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57926 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57927 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57928 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57929 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57930 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57931 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57932 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57933 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57934 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57935 - "GET /api/tokens/nearby?lat=40.075820&lon=-105.300767&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57936 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57937 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57938 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57939 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57940 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57941 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57942 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57943 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57944 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57945 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57946 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57947 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57948 - "GET /api/tokens/nearby?lat=40.075781&lon=-105.300786&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57949 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57950 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57951 - "GET /api/tokens/nearby?lat=40.075724&lon=-105.300822&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57952 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57953 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57954 - "GET /api/tokens/nearby?lat=40.075837&lon=-105.300857&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57955 - "GET /api/tokens/nearby?lat=40.075835&lon=-105.300848&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57956 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57957 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57958 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57959 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57960 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57961 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57962 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57963 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57964 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57965 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57966 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57967 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57968 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57969 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57970 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57971 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57972 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57973 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57974 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57975 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57976 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57977 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57978 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57979 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57980 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57981 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57982 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57983 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57984 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57985 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57986 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57987 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57988 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57989 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57990 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57991 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57992 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57993 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57994 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57995 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57996 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.152:63338 - "GET /players HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57997 - "POST /api/device/location HTTP/1.1" 200 OK
+[TOKEN_SERVICE] Registered token a0e4fda8-8a04-4cfe-ab84-34465726a7ef: action=sheep, type=summon_entity, entity=sheep, item=None
+INFO:     10.0.0.152:63339 - "POST /api/tokens/register HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57998 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:57999 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58000 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58001 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58002 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58003 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58004 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58005 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58006 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58007 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58008 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58009 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58010 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58011 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58012 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58013 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58014 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58015 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58016 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58017 - "GET /api/tokens/nearby?lat=40.075841&lon=-105.300785&limit=10 HTTP/1.1" 200 OK
+INFO:     10.0.0.194:58018 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51169 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51170 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51171 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51172 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51173 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51174 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51175 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51176 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51177 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51178 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51179 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51180 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51181 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51182 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51183 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51184 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51185 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51186 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51187 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51188 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51189 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51190 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51191 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51192 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51193 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51194 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51195 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51196 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51197 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51198 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51199 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51200 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51201 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51202 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51203 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51204 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51205 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51206 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51207 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51208 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51209 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51210 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51211 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51212 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51213 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51214 - "POST /api/device/location HTTP/1.1" 200 OK
+[TOKEN_SERVICE] Registered token 94323157-fadd-4dbf-af15-aa78153fdac2: action=allay, type=summon_entity, entity=allay, item=None
+INFO:     10.0.0.152:63344 - "POST /api/tokens/register HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51215 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51216 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51217 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51218 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51219 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51220 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51221 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51222 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51223 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51224 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51225 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51226 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:51227 - "POST /api/device/location HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '98ACC833-A04F-4BEB-B9B2-550A7685C452', 'server_ip': '10.0.0.227', 'server_port': 8000, 'summoned_object_type': 'sheep', 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014', 'action_type': 'Read', 'minecraft_id': 'sheep', 'entity_summoned': 'sheep', 'timestamp': '2026-02-02T19:38:08-07:00', 'client_device_id': 'esp32-nfc-scanner-001', 'gps_write_lat': 40.0758, 'gps_write_lon': -105.3008, 'position': '~1 ~ ~', 'gps_lat': '40.075794', 'gps_lon': '-105.300820', 'gps_scan_lat': '40.075794', 'gps_scan_lon': '-105.300820', 'gps_scan_alt': 1883.9, 'gps_scan_satellites': 6, 'gps_scan_hdop': 1.64}
+DEBUG: entity_summoned = sheep
+DEBUG: minecraft_id = sheep
+DEBUG: summoned_object_type = sheep
+DEBUG: Building summon command with entity='sheep', full command: execute as @a[name=WiryHealer4014] at @s run summon sheep ~ ~5 ~4
+INFO:     10.0.0.194:53950 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53951 - "POST /api/device/location HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '3746EB94-A19E-429C-ACFF-81E8F2D41858', 'server_ip': '10.0.0.19', 'server_port': 8000, 'summoned_object_type': 'dewb', 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014', 'action_type': 'Read', 'minecraft_id': 'dewb', 'entity_summoned': 'dewb', 'timestamp': '2026-02-02T19:38:49-07:00', 'client_device_id': 'esp32-nfc-scanner-001', 'gps_write_lat': 40.07585, 'gps_write_lon': -105.3009, 'position': '~1 ~ ~', 'gps_lat': '40.075834', 'gps_lon': '-105.300866', 'gps_scan_lat': '40.075834', 'gps_scan_lon': '-105.300866', 'gps_scan_alt': 1886, 'gps_scan_satellites': 5, 'gps_scan_hdop': 3.23}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.194:53952 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '98ACC833-A04F-4BEB-B9B2-550A7685C452', 'server_ip': '10.0.0.227', 'server_port': 8000, 'summoned_object_type': 'sheep', 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014', 'action_type': 'Read', 'minecraft_id': 'sheep', 'entity_summoned': 'sheep', 'timestamp': '2026-02-02T19:39:12-07:00', 'client_device_id': 'esp32-nfc-scanner-001', 'gps_write_lat': 40.0758, 'gps_write_lon': -105.3008, 'position': '~1 ~ ~', 'gps_lat': '40.075839', 'gps_lon': '-105.300890', 'gps_scan_lat': '40.075839', 'gps_scan_lon': '-105.300890', 'gps_scan_alt': 1890.3, 'gps_scan_satellites': 5, 'gps_scan_hdop': 3.11}
+DEBUG: entity_summoned = sheep
+DEBUG: minecraft_id = sheep
+DEBUG: summoned_object_type = sheep
+DEBUG: Building summon command with entity='sheep', full command: execute as @a[name=WiryHealer4014] at @s run summon sheep ~ ~5 ~4
+INFO:     10.0.0.194:53953 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53954 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53955 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53956 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53957 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53958 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53959 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53960 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53961 - "POST /api/device/location HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '4E59DF8B-E27A-44B6-98AA-9F59A06DAB9F', 'server_ip': '10.0.0.227', 'server_port': 8000, 'summoned_object_type': 'allay', 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014', 'action_type': 'Read', 'minecraft_id': 'allay', 'entity_summoned': 'allay', 'timestamp': '2026-02-02T19:46:59-07:00', 'client_device_id': 'esp32-nfc-scanner-001', 'position': '~1 ~ ~', 'gps_lat': '40.075804', 'gps_lon': '-105.300781', 'gps_scan_lat': '40.075804', 'gps_scan_lon': '-105.300781', 'gps_scan_alt': 1874.4, 'gps_scan_satellites': 8, 'gps_scan_hdop': 1.24}
+DEBUG: entity_summoned = allay
+DEBUG: minecraft_id = allay
+DEBUG: summoned_object_type = allay
+DEBUG: Building summon command with entity='allay', full command: execute as @a[name=WiryHealer4014] at @s run summon allay ~ ~5 ~4
+INFO:     10.0.0.194:53962 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53963 - "POST /api/device/location HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '3746EB94-A19E-429C-ACFF-81E8F2D41858', 'server_ip': '10.0.0.19', 'server_port': 8000, 'summoned_object_type': 'dewb', 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014', 'action_type': 'Read', 'minecraft_id': 'dewb', 'entity_summoned': 'dewb', 'timestamp': '2026-02-02T19:48:03-07:00', 'client_device_id': 'esp32-nfc-scanner-001', 'gps_write_lat': 40.07585, 'gps_write_lon': -105.3009, 'position': '~1 ~ ~', 'gps_lat': '40.075804', 'gps_lon': '-105.300715', 'gps_scan_lat': '40.075804', 'gps_scan_lon': '-105.300715', 'gps_scan_alt': 1867.1, 'gps_scan_satellites': 7, 'gps_scan_hdop': 1.3}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.194:53964 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53965 - "POST /api/device/location HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '98ACC833-A04F-4BEB-B9B2-550A7685C452', 'server_ip': '10.0.0.227', 'server_port': 8000, 'summoned_object_type': 'sheep', 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014', 'action_type': 'Read', 'minecraft_id': 'sheep', 'entity_summoned': 'sheep', 'timestamp': '2026-02-02T19:48:30-07:00', 'client_device_id': 'esp32-nfc-scanner-001', 'gps_write_lat': 40.0758, 'gps_write_lon': -105.3008, 'position': '~1 ~ ~', 'gps_lat': '40.075784', 'gps_lon': '-105.300754', 'gps_scan_lat': '40.075784', 'gps_scan_lon': '-105.300754', 'gps_scan_alt': 1872.2, 'gps_scan_satellites': 9, 'gps_scan_hdop': 1.11}
+DEBUG: entity_summoned = sheep
+DEBUG: minecraft_id = sheep
+DEBUG: summoned_object_type = sheep
+DEBUG: Building summon command with entity='sheep', full command: execute as @a[name=WiryHealer4014] at @s run summon sheep ~ ~5 ~4
+INFO:     10.0.0.194:53966 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53967 - "POST /api/device/location HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '3746EB94-A19E-429C-ACFF-81E8F2D41858', 'server_ip': '10.0.0.19', 'server_port': 8000, 'summoned_object_type': 'dewb', 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014', 'action_type': 'Read', 'minecraft_id': 'dewb', 'entity_summoned': 'dewb', 'timestamp': '2026-02-02T19:49:35-07:00', 'client_device_id': 'esp32-nfc-scanner-001', 'gps_write_lat': 40.07585, 'gps_write_lon': -105.3009, 'position': '~1 ~ ~', 'gps_lat': '40.075801', 'gps_lon': '-105.300786', 'gps_scan_lat': '40.075801', 'gps_scan_lon': '-105.300786', 'gps_scan_alt': 1875.2, 'gps_scan_satellites': 8, 'gps_scan_hdop': 1.17}
+DEBUG: entity_summoned = dewb
+DEBUG: minecraft_id = dewb
+DEBUG: summoned_object_type = dewb
+DEBUG: Building summon command with entity='dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon dewb ~ ~5 ~4
+INFO:     10.0.0.194:53968 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '98ACC833-A04F-4BEB-B9B2-550A7685C452', 'server_ip': '10.0.0.227', 'server_port': 8000, 'summoned_object_type': 'sheep', 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014', 'action_type': 'Read', 'minecraft_id': 'sheep', 'entity_summoned': 'sheep', 'timestamp': '2026-02-02T19:49:59-07:00', 'client_device_id': 'esp32-nfc-scanner-001', 'gps_write_lat': 40.0758, 'gps_write_lon': -105.3008, 'position': '~1 ~ ~', 'gps_lat': '40.075804', 'gps_lon': '-105.300768', 'gps_scan_lat': '40.075804', 'gps_scan_lon': '-105.300768', 'gps_scan_alt': 1878.1, 'gps_scan_satellites': 8, 'gps_scan_hdop': 1.16}
+DEBUG: entity_summoned = sheep
+DEBUG: minecraft_id = sheep
+DEBUG: summoned_object_type = sheep
+DEBUG: Building summon command with entity='sheep', full command: execute as @a[name=WiryHealer4014] at @s run summon sheep ~ ~5 ~4
+INFO:     10.0.0.194:53969 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53970 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53971 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53972 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53973 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53974 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53975 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53976 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53977 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53978 - "POST /api/device/location HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '4E59DF8B-E27A-44B6-98AA-9F59A06DAB9F', 'server_ip': '10.0.0.227', 'server_port': 8000, 'summoned_object_type': 'allay', 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014', 'action_type': 'Read', 'minecraft_id': 'allay', 'entity_summoned': 'allay', 'timestamp': '2026-02-02T19:58:27-07:00', 'client_device_id': 'esp32-nfc-scanner-001', 'position': '~1 ~ ~', 'gps_lat': '40.075817', 'gps_lon': '-105.300860', 'gps_scan_lat': '40.075817', 'gps_scan_lon': '-105.300860', 'gps_scan_alt': 1879.5, 'gps_scan_satellites': 10, 'gps_scan_hdop': 1.09}
+DEBUG: entity_summoned = allay
+DEBUG: minecraft_id = allay
+DEBUG: summoned_object_type = allay
+DEBUG: Building summon command with entity='allay', full command: execute as @a[name=WiryHealer4014] at @s run summon allay ~ ~5 ~4
+INFO:     10.0.0.194:53979 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '4E59DF8B-E27A-44B6-98AA-9F59A06DAB9F', 'server_ip': '10.0.0.227', 'server_port': 8000, 'summoned_object_type': 'allay', 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014', 'action_type': 'Read', 'minecraft_id': 'allay', 'entity_summoned': 'allay', 'timestamp': '2026-02-02T19:59:17-07:00', 'client_device_id': 'esp32-nfc-scanner-001', 'position': '~1 ~ ~', 'gps_lat': '40.075614', 'gps_lon': '-105.300687', 'gps_scan_lat': '40.075614', 'gps_scan_lon': '-105.300687', 'gps_scan_alt': 1916.3, 'gps_scan_satellites': 7, 'gps_scan_hdop': 1.68}
+DEBUG: entity_summoned = allay
+DEBUG: minecraft_id = allay
+DEBUG: summoned_object_type = allay
+DEBUG: Building summon command with entity='allay', full command: execute as @a[name=WiryHealer4014] at @s run summon allay ~ ~5 ~4
+INFO:     10.0.0.194:53980 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53981 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53982 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53983 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53984 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53985 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53986 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53987 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.227:47378 - "GET /summons?id=155af384-7626-44d8-a804-6d478bfc5c6b&vscodeBrowserReqId=1770087928271 HTTP/1.1" 422 Unprocessable Entity
+INFO:     10.0.0.194:53988 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53989 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53990 - "POST /api/device/location HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '4E59DF8B-E27A-44B6-98AA-9F59A06DAB9F', 'server_ip': '10.0.0.227', 'server_port': 8000, 'summoned_object_type': 'allay', 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014', 'action_type': 'Read', 'minecraft_id': 'allay', 'entity_summoned': 'allay', 'timestamp': '2026-02-02T20:08:51-07:00', 'client_device_id': 'esp32-nfc-scanner-001', 'position': '~1 ~ ~', 'gps_lat': '40.075802', 'gps_lon': '-105.300817', 'gps_scan_lat': '40.075802', 'gps_scan_lon': '-105.300817', 'gps_scan_alt': 1887.8, 'gps_scan_satellites': 11, 'gps_scan_hdop': 0.97}
+DEBUG: entity_summoned = allay
+DEBUG: minecraft_id = allay
+DEBUG: summoned_object_type = allay
+DEBUG: Building summon command with entity='allay', full command: execute as @a[name=WiryHealer4014] at @s run summon allay ~ ~5 ~4
+INFO:     10.0.0.194:53991 - "POST /summon HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': 'test-fix', 'server_ip': '10.0.0.227', 'server_port': 19132, 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014', 'action_type': 'summon_entity', 'summoned_object_type': 'myname:dewb', 'minecraft_id': 'myname:dewb', 'entity_summoned': 'myname:dewb', 'timestamp': '2026-02-02T02:50:00Z', 'client_device_id': 'test-fix-001', 'gps_lat': 40.758, 'gps_lon': -105.3009}
+DEBUG: entity_summoned = myname:dewb
+DEBUG: minecraft_id = myname:dewb
+DEBUG: summoned_object_type = myname:dewb
+DEBUG: Building summon command with entity='myname:dewb', full command: execute as @a[name=WiryHealer4014] at @s run summon myname:dewb ~ ~5 ~4
+INFO:     10.0.0.227:49562 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53992 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53993 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53994 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53995 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53996 - "POST /api/device/location HTTP/1.1" 200 OK
+INFO:     10.0.0.227:52370 - "GET /summons?id=7a4dd764-e20e-42b0-9a00-1aea02996158&vscodeBrowserReqId=1770088414857 HTTP/1.1" 422 Unprocessable Entity
+INFO:     10.0.0.194:53997 - "POST /api/device/location HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '4E59DF8B-E27A-44B6-98AA-9F59A06DAB9F', 'server_ip': '10.0.0.227', 'server_port': 8000, 'summoned_object_type': 'allay', 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014', 'action_type': 'Read', 'minecraft_id': 'allay', 'entity_summoned': 'allay', 'timestamp': '2026-02-02T20:14:54-07:00', 'client_device_id': 'esp32-nfc-scanner-001', 'position': '~1 ~ ~', 'gps_lat': '40.075795', 'gps_lon': '-105.300795', 'gps_scan_lat': '40.075795', 'gps_scan_lon': '-105.300795', 'gps_scan_alt': 1879.8, 'gps_scan_satellites': 11, 'gps_scan_hdop': 1.08}
+DEBUG: entity_summoned = allay
+DEBUG: minecraft_id = allay
+DEBUG: summoned_object_type = allay
+DEBUG: Building summon command with entity='allay', full command: execute as @a[name=WiryHealer4014] at @s run summon allay ~ ~5 ~4
+INFO:     10.0.0.194:53998 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:53999 - "POST /api/device/location HTTP/1.1" 200 OK
+DEBUG: Full data received: {'token_id': '4E59DF8B-E27A-44B6-98AA-9F59A06DAB9F', 'server_ip': '10.0.0.227', 'server_port': 8000, 'summoned_object_type': 'allay', 'summoning_player': 'WiryHealer4014', 'summoned_player': 'WiryHealer4014', 'action_type': 'Read', 'minecraft_id': 'allay', 'entity_summoned': 'allay', 'timestamp': '2026-02-02T20:15:55-07:00', 'client_device_id': 'esp32-nfc-scanner-001', 'position': '~1 ~ ~', 'gps_lat': '40.075798', 'gps_lon': '-105.300822', 'gps_scan_lat': '40.075798', 'gps_scan_lon': '-105.300822', 'gps_scan_alt': 1900.8, 'gps_scan_satellites': 10, 'gps_scan_hdop': 1.02}
+DEBUG: entity_summoned = allay
+DEBUG: minecraft_id = allay
+DEBUG: summoned_object_type = allay
+DEBUG: Building summon command with entity='allay', full command: execute as @a[name=WiryHealer4014] at @s run summon allay ~ ~5 ~4
+INFO:     10.0.0.194:54000 - "POST /summon HTTP/1.1" 200 OK
+INFO:     10.0.0.194:54001 - "POST /api/device/location HTTP/1.1" 200 OK
